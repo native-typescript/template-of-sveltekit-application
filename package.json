@@ -8,6 +8,10 @@
 		"url": "https://github.com/native-typescript/template-of-sveltekit-application/issues"
 	},
 	"description": "A fleet management system.",
+	"devDependencies": {
+		"@types/node": "25.9.1",
+		"typescript": "6.0.3"
+	},
 	"engines": {
 		"node": ">=26.9.0",
 		"npm": ">=11.19.1"
@@ -18,7 +22,9 @@
 		"type": "git",
 		"url": "git+https://github.com/native-typescript/template-of-sveltekit-application.git"
 	},
-	"scripts": {},
+	"scripts": {
+		"typescript:check": "tsc"
+	},
 	"type": "module",
 	"version": "5.0.0"
 }
