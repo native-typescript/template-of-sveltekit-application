@@ -4,8 +4,8 @@ ARG DEBIAN__DOCKER_IMAGE__TAG__DATE
 ENV DEBIAN__DOCKER_IMAGE__TAG__DATE=${DEBIAN__DOCKER_IMAGE__TAG__DATE}
 USER root
 RUN useradd -m -s /bin/bash developer
-RUN mkdir /home/developer/template-of-node-js-library
-RUN chown developer:developer /home/developer/template-of-node-js-library
+RUN mkdir /home/developer/template-of-sveltekit-application
+RUN chown developer:developer /home/developer/template-of-sveltekit-application
 RUN apt-get update && apt-get install -y --no-install-recommends git
 RUN apt-get update && apt-get install -y --no-install-recommends openssh-client
 RUN apt-get update && apt-get install -y --no-install-recommends curl xz-utils ca-certificates

@@ -12,13 +12,14 @@
 	"otherPortsAttributes": {},
 	"overrideCommand": true,
 	"portsAttributes": {},
+	"postCreateCommand": "npm clean-install",
 	"privileged": false,
 	"remoteEnv": {},
 	"remoteUser": "developer",
 	"securityOpt": [],
-	"service": "template-of-node-js-library",
+	"service": "template-of-sveltekit-application",
 	"shutdownAction": "stopCompose",
 	"updateRemoteUserUID": true,
 	"userEnvProbe": "none",
-	"workspaceFolder": "/home/developer/template-of-node-js-library"
+	"workspaceFolder": "/home/developer/template-of-sveltekit-application"
 }
