@@ -1,0 +1,23 @@
+{
+	"author": {
+		"email": "goodheropl@gmail.com",
+		"name": "Rafał Majewski",
+		"url": "https://github.com/rafal-majewski"
+	},
+	"bugs": {
+		"url": "https://github.com/native-typescript/template-of-sveltekit-application/issues"
+	},
+	"engines": {
+		"node": ">=24.14.0",
+		"npm": ">=11.9.0"
+	},
+	"homepage": "https://github.com/native-typescript/template-of-sveltekit-application#readme",
+	"name": "@native-typescript/template-of-sveltekit-application",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/native-typescript/template-of-sveltekit-application.git"
+	},
+	"scripts": {},
+	"type": "module",
+	"version": "4.0.0"
+}
