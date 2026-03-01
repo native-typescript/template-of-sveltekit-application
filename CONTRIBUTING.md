@@ -159,6 +159,12 @@ npm run test:check:unit
 
 to perform testing for unit tests.
 
+#### Environment variables
+
+The tests can be configured via [environment variables](https://en.wikipedia.org/wiki/Environment_variable).
+
+##### List
+
 ### TypeScript
 
 [TypeScript](https://www.typescriptlang.org) is used for development.
