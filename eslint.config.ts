@@ -573,8 +573,8 @@ export default [
 					zones: [
 						{
 							except: [],
-							from: `./!(node_modules|testing)/**/*`,
-							message: `The testing code should not import non-testing code.`,
+							from: `./!(node_modules|source|testing)/**/*`,
+							message: `The testing code should not import non-source code or non-testing code.`,
 							target: `./testing/**/*`,
 						},
 						{
@@ -582,6 +582,12 @@ export default [
 							from: `./**/*.test.ts`,
 							message: `Test suites should not be imported.`,
 							target: `./**/*.ts`,
+						},
+						{
+							except: [],
+							from: `./source/instances/**/*`,
+							message: `Core code in source should not import instances.`,
+							target: `./source/core/**/*`,
 						},
 						{
 							except: [],
