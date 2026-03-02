@@ -1,4 +1,5 @@
 /.devcontainer/.env
+/.env
 /.svelte-kit
 /build
 /node_modules
