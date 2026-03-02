@@ -4,6 +4,7 @@
 	"stylelint.snippet": ["css", "scss", "svelte"],
 	"stylelint.validate": ["css", "scss", "svelte"],
 	"svelte.language-server.runtime-args": [
+		"--env-file-if-exists=./.env",
 		"--import=@native-typescript/loader-of-typescript-for-node-js"
 	]
 }

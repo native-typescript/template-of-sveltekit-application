@@ -23,7 +23,7 @@
 	"otherPortsAttributes": {},
 	"overrideCommand": true,
 	"portsAttributes": {},
-	"postCreateCommand": "npm clean-install && . ~/.bashrc && ADAPTER__SHOULD_BE_USED=no HOSTING__BASE_PATH= npm run sveltekit:synchronize && npx playwright install",
+	"postCreateCommand": "[ -f ./.env ] || cp ./.env.example ./.env; npm clean-install && . ~/.bashrc && ADAPTER__SHOULD_BE_USED=no HOSTING__BASE_PATH= npm run sveltekit:synchronize && npx playwright install",
 	"privileged": false,
 	"remoteEnv": {},
 	"remoteUser": "developer",
