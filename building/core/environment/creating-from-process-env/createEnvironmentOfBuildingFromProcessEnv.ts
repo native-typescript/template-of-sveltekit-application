@@ -5,7 +5,6 @@ import {
 } from "../fields/index.ts";
 import type {
 	WithNodeAdapterEnvironmentOfBuilding,
-	WithoutAdapterEnvironmentOfBuilding,
 	WithStaticAdapterEnvironmentOfBuilding,
 } from "../implementations/index.ts";
 import type {SupportedEnvironmentOfBuilding} from "../supported/index.ts";
@@ -24,15 +23,6 @@ export function createEnvironmentOfBuildingFromProcessEnv(
 				adapter: adapter,
 				configuration: configurationOfEnvironment,
 				type: `withNodeAdapter`,
-			};
-			return environment;
-		}
-		case `withoutAdapter`: {
-			const adapter = null;
-			const environment: WithoutAdapterEnvironmentOfBuilding = {
-				adapter: adapter,
-				configuration: configurationOfEnvironment,
-				type: `withoutAdapter`,
 			};
 			return environment;
 		}

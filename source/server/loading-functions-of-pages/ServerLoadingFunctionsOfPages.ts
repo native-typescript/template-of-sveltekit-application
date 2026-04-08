@@ -7,10 +7,7 @@ export type ServerLoadingFunctionsOfPages<
 	OutputData extends undefined | {readonly [key: string]: unknown},
 	RouteIdToUse extends null | RouteId,
 > = {
-	readonly [CurrentKey in Exclude<
-		SupportedEnvironmentOfSource[`configuration`][`adapter`],
-		null
-	>[`id`]]: ServerLoad<
+	readonly [CurrentKey in SupportedEnvironmentOfSource[`configuration`][`adapter`][`id`]]: ServerLoad<
 		RouteParams,
 		PageServerParentData,
 		OutputData,

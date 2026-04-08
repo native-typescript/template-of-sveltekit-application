@@ -10,9 +10,6 @@ if (dev) {
 			await runEntrypointOfSource(environment);
 			break;
 		}
-		case `withoutAdapter`: {
-			break;
-		}
 		case `withStaticAdapter`: {
 			break;
 		}
@@ -32,9 +29,6 @@ if (dev) {
 					runServer(environment.configuration.server),
 					runEntrypointOfSource(environment),
 				]);
-				break;
-			}
-			case `withoutAdapter`: {
 				break;
 			}
 			case `withStaticAdapter`: {

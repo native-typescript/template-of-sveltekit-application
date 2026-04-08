@@ -4,9 +4,9 @@ import type {
 } from "./fields/index.ts";
 import type {Adapter} from "@sveltejs/kit";
 export type EnvironmentOfBuilding<
-	AdapterToUse extends Adapter | null,
+	AdapterToUse extends Adapter,
 	ConfigurationToUse extends ConfigurationOfEnvironmentOfBuilding<
-		AdapterOfConfigurationOfEnvironmentOfBuilding<string> | null,
+		AdapterOfConfigurationOfEnvironmentOfBuilding<string>,
 		string
 	>,
 	TypeToUse extends string,

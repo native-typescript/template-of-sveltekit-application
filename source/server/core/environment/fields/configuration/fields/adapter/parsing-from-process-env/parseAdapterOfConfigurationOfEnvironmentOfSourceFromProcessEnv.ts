@@ -20,8 +20,5 @@ export function parseAdapterOfConfigurationOfEnvironmentOfSourceFromProcessEnv(
 				{id: `static`};
 			return adapterOfConfiguration;
 		}
-		case null: {
-			return null;
-		}
 	}
 }
