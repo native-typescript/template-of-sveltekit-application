@@ -10,6 +10,7 @@
 	"dependencies": {
 		"zod": "4.3.6"
 	},
+	"description": "A template of a SvelteKit application.",
 	"devDependencies": {
 		"@commitlint/cli": "20.5.0",
 		"@commitlint/types": "20.5.0",
