@@ -3,8 +3,7 @@ import type {
 	HostingOfConfigurationOfEnvironmentOfBuilding,
 } from "./fields/index.ts";
 export type ConfigurationOfEnvironmentOfBuilding<
-	AdapterToUse extends
-		AdapterOfConfigurationOfEnvironmentOfBuilding<string> | null,
+	AdapterToUse extends AdapterOfConfigurationOfEnvironmentOfBuilding<string>,
 	TypeToUse extends string,
 > = {
 	readonly adapter: AdapterToUse;

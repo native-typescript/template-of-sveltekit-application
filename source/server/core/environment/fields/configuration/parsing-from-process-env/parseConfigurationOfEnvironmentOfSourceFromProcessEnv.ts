@@ -1,10 +1,8 @@
 import type {schemaForProcessEnvOfSource} from "../../../../schema-for-process-env/index.ts";
 import {
 	parseWithNodeAdapterConfigurationOfEnvironmentOfSourceFromProcessEnv,
-	parseWithoutAdapterConfigurationOfEnvironmentOfSourceFromProcessEnv,
 	parseWithStaticAdapterConfigurationOfEnvironmentOfSourceFromProcessEnv,
 	type WithNodeAdapterConfigurationOfEnvironmentOfSource,
-	type WithoutAdapterConfigurationOfEnvironmentOfSource,
 	type WithStaticAdapterConfigurationOfEnvironmentOfSource,
 } from "../implementations/index.ts";
 import type {SupportedConfigurationOfEnvironmentOfSource} from "../supported/index.ts";
@@ -23,13 +21,6 @@ export function parseConfigurationOfEnvironmentOfSourceFromProcessEnv(
 		case `static`: {
 			const configuration: WithStaticAdapterConfigurationOfEnvironmentOfSource =
 				parseWithStaticAdapterConfigurationOfEnvironmentOfSourceFromProcessEnv(
-					processEnv,
-				);
-			return configuration;
-		}
-		case null: {
-			const configuration: WithoutAdapterConfigurationOfEnvironmentOfSource =
-				parseWithoutAdapterConfigurationOfEnvironmentOfSourceFromProcessEnv(
 					processEnv,
 				);
 			return configuration;
