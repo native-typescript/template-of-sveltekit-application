@@ -10,11 +10,6 @@ export function create(
 				configuration,
 			);
 		}
-		case `withoutAdapter`: {
-			return implementations_.withoutAdapter_.createWithoutAdapterEnvironment(
-				configuration,
-			);
-		}
 		case `withStaticAdapter`: {
 			return implementations_.withStaticAdapter_.createWithStaticAdapterEnvironment(
 				configuration,

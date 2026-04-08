@@ -13,11 +13,6 @@ export function create(
 				};
 			return environment;
 		}
-		case `withoutAdapter`: {
-			const environment: implementations_.withoutAdapter_.WithoutAdapterEnvironment =
-				{configurationOfAdapter: null, type: `withoutAdapter`};
-			return environment;
-		}
 		case `withStaticAdapter`: {
 			const environment: implementations_.withStaticAdapter_.WithStaticAdapterEnvironment =
 				{

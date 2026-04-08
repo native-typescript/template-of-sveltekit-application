@@ -3,6 +3,7 @@
 ## File structure
 
 - .devcontainer – Configuration of [Development Containers](https://containers.dev);
+- [.dockerignore](https://docs.docker.com/reference/dockerfile/#dockerignore-file);
 - .git – Metadata of the [Git](https://git-scm.com) repository;
 - .github – Configuration of [GitHub](https://github.com);
 - [.gitignore](https://git-scm.com/docs/gitignore);
@@ -23,6 +24,8 @@
   - index.ts – Index;
   - instances – Instances of the core modules;
   - module.ts – Module;
+- [Dockerfile](https://docs.docker.com/build/concepts/dockerfile/);
+- Dockerfile.system.test.ts;
 - [eslint.config.ts](https://eslint.org/docs/latest/use/configure/configuration-files) – Configuration of [ESLint](https://eslint.org);
 - node_modules – [Node.js](https://nodejs.org) dependencies;
 - [package-lock.json](https://docs.npmjs.com/cli/v7/configuring-npm/package-lock-json) – [npm](https://www.npmjs.com) lock;
@@ -320,6 +323,9 @@ to perform testing for unit tests.
 The tests can be configured via [environment variables](https://en.wikipedia.org/wiki/Environment_variable).
 
 ##### List
+
+- `DEBIAN__DOCKER_IMAGE__TAG__DATE`: A part of the Debian Docker image tag to use. This is a date in the format of `YYYYMMDD`;
+- `NODE_JS__VERSION`: The version of Node.js to install;
 
 ### TypeScript
 

@@ -1,6 +1,6 @@
 import type {fields_} from "./fields/module.ts";
 export interface Configuration<
-	AdapterToUse extends fields_.adapter_.Adapter<string> | null,
+	AdapterToUse extends fields_.adapter_.Adapter<string>,
 	TypeToUse extends string,
 > {
 	readonly adapter: AdapterToUse;

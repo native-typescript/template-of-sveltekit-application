@@ -5,9 +5,7 @@ const vitePreprocessor = vitePreprocess({});
 export default {
 	compilerOptions: {runes: true},
 	kit: {
-		...(building_.instances_.environment_.environment.adapter === null ?
-			{}
-		:	{adapter: building_.instances_.environment_.environment.adapter}),
+		adapter: building_.instances_.environment_.environment.adapter,
 		csrf: {trustedOrigins: []},
 		env: {dir: `.`},
 		files: {

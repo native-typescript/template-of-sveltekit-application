@@ -10,12 +10,6 @@ if (dev) {
 			await runningEntrypoint_.run(environment);
 			break;
 		}
-		case `withoutAdapter`: {
-			/*
-				Development without adapter should not have an entrypoint.
-			*/
-			break;
-		}
 		case `withStaticAdapter`: {
 			/*
 				Development with static adapter should not have an entrypoint.
@@ -37,12 +31,6 @@ if (dev) {
 					core_.runningServer_.run(environment.configurationOfAdapter.server),
 					runningEntrypoint_.run(environment),
 				]);
-				break;
-			}
-			case `withoutAdapter`: {
-				/*
-					Production without adapter should not have an entrypoint.
-				*/
 				break;
 			}
 			case `withStaticAdapter`: {

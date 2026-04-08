@@ -61,3 +61,22 @@ npm run start:build
 The built application must already be built as described in [the "Building" section](#building).
 
 Note that you can only start the built application that was built using the Node adapter.
+
+## Production setup with Node adapter
+
+For production, you can use Docker to containerize and run the application.
+
+1. Prepare the Docker image's build arguments:
+   - `DEBIAN__DOCKER_IMAGE__TAG__DATE`: A part of the Debian Docker image tag to use. This is a date in the format of `YYYYMMDD`. You can find the available tags on the [Debian Docker Hub page](https://hub.docker.com/_/debian).
+   - `HOSTING__BASE_PATH`: Base path under which the application is hosted. Use an empty string for root hosting, or a value that starts with `/` such as `/app`.
+   - `NODE_JS__VERSION`: The version of Node.js to install in the Docker image.
+2. Build the Docker image using the provided `./Dockerfile` while being in the project's root directory:
+   ```bash
+   docker build \
+    --build-arg DEBIAN__DOCKER_IMAGE__TAG__DATE=${DEBIAN__DOCKER_IMAGE__TAG__DATE} \
+    --build-arg HOSTING__BASE_PATH=${HOSTING__BASE_PATH} \
+    --build-arg NODE_JS__VERSION=${NODE_JS__VERSION} \
+    --tag template-of-sveltekit-application:$(npm pkg get version | tr -d '"') \
+    .
+   ```
+3. Run the built Docker image.

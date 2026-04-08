@@ -8,9 +8,6 @@ export type Functions<
 	RouteIdToUse extends null | RouteId,
 > = {
 	readonly [
-		CurrentKey in Exclude<
-			core_.environment_.supported_.SupportedEnvironment[`configurationOfAdapter`],
-			null
-		>[`id`]
+		CurrentKey in core_.environment_.supported_.SupportedEnvironment[`configurationOfAdapter`][`id`]
 	]: ServerLoad<RouteParams, PageServerParentData, OutputData, RouteIdToUse>;
 };

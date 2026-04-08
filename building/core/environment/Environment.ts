@@ -1,7 +1,7 @@
 import type {configuration_} from "./configuration/module.ts";
 import type {Adapter} from "@sveltejs/kit";
 export interface Environment<
-	AdapterToUse extends Adapter | null,
+	AdapterToUse extends Adapter,
 	TypeToUse extends string,
 > {
 	readonly adapter: AdapterToUse;
