@@ -1,1 +1,7 @@
 # Template of a SvelteKit application
+
+## Environment variables
+
+The application can be configured via [environment variables](https://en.wikipedia.org/wiki/Environment_variable).
+
+### List
