@@ -7,7 +7,13 @@ export function create(
 	switch (configuration.modeOfOperation) {
 		case `dynamic`: {
 			switch (configuration.typeOfAdapter) {
-				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+				case `node`: {
+					const environment =
+						implementations_.withDynamicModeOfOperationWithNodeAdapter_.creatingFromConfiguration_.create(
+							configuration,
+						) satisfies implementations_.withDynamicModeOfOperationWithNodeAdapter_.WithDynamicModeOfOperationWithNodeAdapterEnvironment;
+					return environment;
+				}
 				case `none`: {
 					const environment =
 						implementations_.withDynamicModeOfOperationWithoutAdapter_.creatingFromConfiguration_.create(
@@ -19,7 +25,13 @@ export function create(
 		}
 		case `static`: {
 			switch (configuration.typeOfAdapter) {
-				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+				case `node`: {
+					const environment =
+						implementations_.withStaticModeOfOperationWithNodeAdapter_.creatingFromConfiguration_.create(
+							configuration,
+						) satisfies implementations_.withStaticModeOfOperationWithNodeAdapter_.WithStaticModeOfOperationWithNodeAdapterEnvironment;
+					return environment;
+				}
 				case `none`: {
 					const environment =
 						implementations_.withStaticModeOfOperationWithoutAdapter_.creatingFromConfiguration_.create(

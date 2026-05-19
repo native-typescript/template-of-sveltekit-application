@@ -1,1 +1,1 @@
-export type * from "./adapter/module.ts";
+export * from "./adapter/module.ts";
