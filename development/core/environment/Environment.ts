@@ -1,3 +1,4 @@
+import type {configuration_} from "./configuration/module.ts";
 export interface Environment {
-	readonly [key: string]: never;
+	readonly configurationOfServer: configuration_.fields_.server_.Server;
 }

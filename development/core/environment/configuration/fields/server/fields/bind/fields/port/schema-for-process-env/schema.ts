@@ -1,0 +1,5 @@
+import {fields_} from "../fields/module.ts";
+import {type} from "arktype";
+export const schema = type({
+	SERVER__BIND__PORT__NUMBER: fields_.number_.schemaForProcessEnv_.schema,
+}).and(fields_.tls_.schemaForProcessEnv_.schema);

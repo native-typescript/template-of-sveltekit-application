@@ -1,6 +1,14 @@
 import type {Configuration} from "../Configuration.ts";
-import {type} from "arktype";
-export const schema = type({}).pipe(function parse(processEnv): Configuration {
-	const configuration = {} as const satisfies Configuration;
-	return configuration;
-});
+import {fields_} from "../fields/module.ts";
+export const schema = fields_.server_.schemaForProcessEnv_.schema.pipe(
+	function parse(processEnv): Configuration {
+		const serverOfConfiguration =
+			fields_.server_.schemaForProcessEnv_.parsing_.parse(
+				processEnv,
+			) satisfies fields_.server_.Server;
+		const configuration = {
+			server: serverOfConfiguration,
+		} as const satisfies Configuration;
+		return configuration;
+	},
+);
