@@ -1,4 +1,6 @@
 import type {implementations_} from "../implementations/module.ts";
 export type SupportedEnvironment =
+	| implementations_.withDynamicModeOfOperationWithNodeAdapter_.WithDynamicModeOfOperationWithNodeAdapterEnvironment
 	| implementations_.withDynamicModeOfOperationWithoutAdapter_.WithDynamicModeOfOperationWithoutAdapterEnvironment
+	| implementations_.withStaticModeOfOperationWithNodeAdapter_.WithStaticModeOfOperationWithNodeAdapterEnvironment
 	| implementations_.withStaticModeOfOperationWithoutAdapter_.WithStaticModeOfOperationWithoutAdapterEnvironment;
