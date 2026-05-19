@@ -1,13 +1,11 @@
-import {
-	createEnvironmentOfTestingFromProcessEnv,
-	type EnvironmentOfTesting,
-	schemaForProcessEnvOfTesting,
-} from "../../core/index.ts";
-import {stringifyZodIssues} from "@native-typescript/stringifying-zod-issues";
+import {createEnvironmentOfTestingFromProcessEnv} from "../../core/environment/creating-from-process-env/createEnvironmentOfTestingFromProcessEnv.ts";
+import type {EnvironmentOfTesting} from "../../core/environment/EnvironmentOfTesting.ts";
+import {schemaForProcessEnvOfTesting} from "../../core/schema-for-process-env/schemaForProcessEnvOfTesting.ts";
+import {stringifyZodIssues} from "../../core/stringifying-Zod-issues/stringifyZodIssues.ts";
 import type {z} from "zod";
-const resultOfParsing: z.ZodSafeParseResult<
-	z.output<typeof schemaForProcessEnvOfTesting>
-> = schemaForProcessEnvOfTesting.safeParse(process.env);
+const resultOfParsing = schemaForProcessEnvOfTesting.safeParse(
+	process.env,
+) satisfies z.ZodSafeParseResult<z.output<typeof schemaForProcessEnvOfTesting>>;
 if (!resultOfParsing.success) {
 	console.error(
 		`An error occurred while parsing the environment variables for the configuration of testing:

@@ -1,0 +1,9 @@
+/**/*
+!/building
+!/hook-for-loading-TypeScript
+!/package-lock.json
+!/package.json
+!/source
+!/svelte.config.ts
+!/vite.config.ts
+/source/**/*.test.ts

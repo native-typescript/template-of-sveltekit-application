@@ -1,7 +1,9 @@
 import type {Config} from "stylelint";
 export default {
 	extends: [],
-	overrides: [{customSyntax: `postcss-html`, files: [`**/*.svelte`]}],
+	overrides: [
+		{customSyntax: `postcss-html`, files: [`**/*.html`, `**/*.svelte`]},
+	],
 	plugins: [`stylelint-order`],
 	rules: {
 		"alpha-value-notation": [`number`, {exceptProperties: []}],

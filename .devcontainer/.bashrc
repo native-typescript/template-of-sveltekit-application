@@ -1,1 +1,1 @@
-export NODE_OPTIONS="--import=@native-typescript/loader-of-typescript-for-node-js"
+export NODE_OPTIONS="--import=$(pwd)/hook-for-loading-TypeScript/entrypoint-of-hook-for-loading-TypeScript.ts"

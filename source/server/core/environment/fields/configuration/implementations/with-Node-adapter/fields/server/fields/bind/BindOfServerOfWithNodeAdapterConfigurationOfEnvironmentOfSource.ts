@@ -1,0 +1,5 @@
+import type {PortOfBindOfServerOfWithNodeAdapterConfigurationOfEnvironmentOfSource} from "./fields/port/PortOfBindOfServerOfWithNodeAdapterConfigurationOfEnvironmentOfSource.ts";
+export type BindOfServerOfWithNodeAdapterConfigurationOfEnvironmentOfSource = {
+	readonly address: string;
+	readonly port: PortOfBindOfServerOfWithNodeAdapterConfigurationOfEnvironmentOfSource;
+};

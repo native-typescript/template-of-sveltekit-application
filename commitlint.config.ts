@@ -11,6 +11,7 @@ export default {
 		},
 	},
 	rules: {
+		"body-full-stop": [2, `always`, `.`],
 		"body-leading-blank": [2, `always`],
 		"body-max-length": [1, `always`, Infinity],
 		"body-max-line-length": [1, `always`, Infinity],

@@ -1,0 +1,4 @@
+import type {BindOfServerOfWithNodeAdapterConfigurationOfEnvironmentOfSource} from "./fields/bind/BindOfServerOfWithNodeAdapterConfigurationOfEnvironmentOfSource.ts";
+export type ServerOfWithNodeAdapterConfigurationOfEnvironmentOfSource = {
+	readonly bind: BindOfServerOfWithNodeAdapterConfigurationOfEnvironmentOfSource;
+};

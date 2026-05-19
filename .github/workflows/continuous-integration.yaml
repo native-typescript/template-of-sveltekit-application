@@ -1,5 +1,5 @@
 env:
-  NODE_JS__VERSION: "24.14.0"
+  NODEJS_VERSION: "24.14.0"
 jobs:
   commitlint_check:
     name: "commitlint check"
@@ -7,30 +7,16 @@ jobs:
     steps:
       - name: "Checkout the repository"
         uses: "actions/checkout@v6.0.2"
-        with:
-          fetch-depth: 0
       - name: "Setup Node.js"
         uses: "actions/setup-node@v6.3.0"
         with:
           cache: "npm"
-          node-version: "${{env.NODE_JS__VERSION}}"
+          node-version: "${{env.NODEJS_VERSION}}"
       - name: "Install the dependencies"
+        run: "npm ci"
+      - name: "Run the commitlint check"
         run: |
-          npm ci --registry=https://registry.npmjs.org --//registry.npmjs.org/:_authToken=${{secrets.NPM__REGISTRY__ACCESS_TOKEN}}
-      - if: "${{github.event_name == 'pull_request'}}"
-        name: "Configure Git"
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-      - if: "${{github.event_name == 'pull_request'}}"
-        name: "Add a dummy commit with the pull request title as the commit message"
-        run: |
-          git commit --allow-empty --message "${{github.event.pull_request.title}}"
-      - env:
-          NODE_OPTIONS: "--import=@native-typescript/loader-of-typescript-for-node-js"
-        name: "Run the commitlint check"
-        run: |
-          npm run commitlint:check:last
+          npm run commitlint:check:range -- --from=${{github.event.before}} --to=${{github.sha}}
   eslint_check:
     name: "ESLint check"
     runs-on: "ubuntu-latest"
@@ -41,13 +27,10 @@ jobs:
         uses: "actions/setup-node@v6.3.0"
         with:
           cache: "npm"
-          node-version: "${{env.NODE_JS__VERSION}}"
+          node-version: "${{env.NODEJS_VERSION}}"
       - name: "Install the dependencies"
-        run: |
-          npm ci --registry=https://registry.npmjs.org --//registry.npmjs.org/:_authToken=${{secrets.NPM__REGISTRY__ACCESS_TOKEN}}
-      - env:
-          NODE_OPTIONS: "--import=@native-typescript/loader-of-typescript-for-node-js"
-        name: "Run the ESLint check"
+        run: "npm ci"
+      - name: "Run the ESLint check"
         run: |
           npm run eslint:check
   prettier_check:
@@ -60,13 +43,10 @@ jobs:
         uses: "actions/setup-node@v6.3.0"
         with:
           cache: "npm"
-          node-version: "${{env.NODE_JS__VERSION}}"
+          node-version: "${{env.NODEJS_VERSION}}"
       - name: "Install the dependencies"
-        run: |
-          npm ci --registry=https://registry.npmjs.org --//registry.npmjs.org/:_authToken=${{secrets.NPM__REGISTRY__ACCESS_TOKEN}}
-      - env:
-          NODE_OPTIONS: "--import=@native-typescript/loader-of-typescript-for-node-js"
-        name: "Run the Prettier check"
+        run: "npm ci"
+      - name: "Run the Prettier check"
         run: |
           npm run prettier:check
   stylelint_check:
@@ -74,18 +54,15 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Checkout the repository"
-        uses: "actions/checkout@v6.0.2"
+        uses: "actions/checkout@v4"
       - name: "Setup Node.js"
         uses: "actions/setup-node@v6.3.0"
         with:
           cache: "npm"
-          node-version: "${{env.NODE_JS__VERSION}}"
+          node-version: "${{env.NODEJS_VERSION}}"
       - name: "Install the dependencies"
-        run: |
-          npm ci --registry=https://registry.npmjs.org --//registry.npmjs.org/:_authToken=${{secrets.NPM__REGISTRY__ACCESS_TOKEN}}
-      - env:
-          NODE_OPTIONS: "--import=@native-typescript/loader-of-typescript-for-node-js"
-        name: "Run the Stylelint check"
+        run: "npm ci"
+      - name: "Run the Stylelint check"
         run: |
           npm run stylelint:check
   test_check:
@@ -98,13 +75,10 @@ jobs:
         uses: "actions/setup-node@v6.3.0"
         with:
           cache: "npm"
-          node-version: "${{env.NODE_JS__VERSION}}"
+          node-version: "${{env.NODEJS_VERSION}}"
       - name: "Install the dependencies"
-        run: |
-          npm ci --registry=https://registry.npmjs.org --//registry.npmjs.org/:_authToken=${{secrets.NPM__REGISTRY__ACCESS_TOKEN}}
-      - env:
-          NODE_OPTIONS: "--import=@native-typescript/loader-of-typescript-for-node-js"
-        name: "Run the test check"
+        run: "npm ci"
+      - name: "Run the test check"
         run: |
           npm run test:check
   typescript_check:
@@ -117,21 +91,13 @@ jobs:
         uses: "actions/setup-node@v6.3.0"
         with:
           cache: "npm"
-          node-version: "${{env.NODE_JS__VERSION}}"
+          node-version: "${{env.NODEJS_VERSION}}"
       - name: "Install the dependencies"
-        run: |
-          npm ci --registry=https://registry.npmjs.org --//registry.npmjs.org/:_authToken=${{secrets.NPM__REGISTRY__ACCESS_TOKEN}}
-      - env:
-          NODE_OPTIONS: "--import=@native-typescript/loader-of-typescript-for-node-js"
-        name: "Run the TypeScript check"
+        run: "npm ci"
+      - name: "Run the TypeScript check"
         run: |
           npm run typescript:check
 name: "Continuous integration"
 on:
   pull_request:
-    types:
-      - "edited"
-      - "opened"
-      - "reopened"
-      - "synchronize"
   push:
