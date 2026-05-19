@@ -9,6 +9,7 @@ export const schemaForProcessEnvOfBuilding = z.intersection(
 				return null;
 			}),
 		}),
+		z.object({ADAPTER__NAME: z.literal(`Node`)}),
 	]),
 	z.object({
 		HOSTING__BASE_PATH: z.union([

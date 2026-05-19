@@ -3,8 +3,12 @@ import {
 	parseConfigurationOfEnvironmentOfBuildingFromProcessEnv,
 	type SupportedConfigurationOfEnvironmentOfBuilding,
 } from "../fields/index.ts";
-import type {WithoutAdapterEnvironmentOfBuilding} from "../implementations/index.ts";
+import type {
+	WithNodeAdapterEnvironmentOfBuilding,
+	WithoutAdapterEnvironmentOfBuilding,
+} from "../implementations/index.ts";
 import type {SupportedEnvironmentOfBuilding} from "../supported/index.ts";
+import createNodeAdapter from "@sveltejs/adapter-node";
 import type {z} from "zod";
 export function createEnvironmentOfBuildingFromProcessEnv(
 	processEnv: z.output<typeof schemaForProcessEnvOfBuilding>,
@@ -12,7 +16,15 @@ export function createEnvironmentOfBuildingFromProcessEnv(
 	const configurationOfEnvironment: SupportedConfigurationOfEnvironmentOfBuilding =
 		parseConfigurationOfEnvironmentOfBuildingFromProcessEnv(processEnv);
 	switch (configurationOfEnvironment.type) {
-		/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+		case `withNodeAdapter`: {
+			const adapter = createNodeAdapter({});
+			const environment: WithNodeAdapterEnvironmentOfBuilding = {
+				adapter: adapter,
+				configuration: configurationOfEnvironment,
+				type: `withNodeAdapter`,
+			};
+			return environment;
+		}
 		case `withoutAdapter`: {
 			const adapter = null;
 			const environment: WithoutAdapterEnvironmentOfBuilding = {

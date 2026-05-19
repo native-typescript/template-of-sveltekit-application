@@ -1,0 +1,1 @@
+export {parseTlsOfPortOfBindOfServerOfWithNodeAdapterConfigurationOfEnvironmentOfSourceFromProcessEnv} from "./parseTlsOfPortOfBindOfServerOfWithNodeAdapterConfigurationOfEnvironmentOfSourceFromProcessEnv.ts";

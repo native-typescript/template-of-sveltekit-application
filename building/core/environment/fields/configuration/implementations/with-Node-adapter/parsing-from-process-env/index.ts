@@ -1,0 +1,1 @@
+export {parseWithNodeAdapterConfigurationOfEnvironmentOfBuildingFromProcessEnv} from "./parseWithNodeAdapterConfigurationOfEnvironmentOfBuildingFromProcessEnv.ts";
