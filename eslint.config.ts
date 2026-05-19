@@ -1412,6 +1412,10 @@ export default [
 		},
 	},
 	{
+		files: [`./**/*.stories.ts`],
+		rules: {"import-x/no-default-export": [`off`]},
+	},
+	{
 		files: [`./**/index.ts`],
 		rules: {
 			"no-restricted-imports": [
@@ -1489,6 +1493,10 @@ export default [
 				},
 			],
 		},
+	},
+	{
+		files: [`./storybook/main.ts`, `./storybook/preview.ts`],
+		rules: {"import-x/no-default-export": [`off`]},
 	},
 	{
 		files: [`./stylelint.config.ts`],
