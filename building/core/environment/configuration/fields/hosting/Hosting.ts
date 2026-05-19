@@ -1,3 +1,4 @@
+import type {fields_} from "./fields/module.ts";
 export interface Hosting {
-	readonly [key: string]: never;
+	readonly basePath: fields_.basePath_.BasePath;
 }

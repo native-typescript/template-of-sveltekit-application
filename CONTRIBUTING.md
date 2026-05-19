@@ -96,6 +96,7 @@ The building process can be configured via [environment variables](https://en.wi
   - `no`: No adapter is used;
   - `yes`: An adapter is used. Then you must also set the following variables:
     - `ADAPTER__NAME`: The name of the adapter to use. The following values are possible:
+- `HOSTING__BASE_PATH`: Base path under which the application is hosted. Use an empty string for root hosting, or a value that starts with a `/` such as `/app`;
 
 ### commitlint
 

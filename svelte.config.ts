@@ -34,7 +34,18 @@ export default {
 			// eslint-disable-next-line @typescript-eslint/no-deprecated
 			src: `./source`,
 		},
-		paths: {assets: ``, base: ``, relative: false},
+		paths: {
+			assets: ``,
+			base:
+				(
+					building_.instances_.environment_.environment.configurationOfHosting
+						.basePath === null
+				) ?
+					``
+				:	building_.instances_.environment_.environment.configurationOfHosting
+						.basePath,
+			relative: false,
+		},
 	},
 	preprocess: [vitePreprocessor],
 	vitePlugin: {prebundleSvelteLibraries: false},
