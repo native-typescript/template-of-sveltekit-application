@@ -36,6 +36,21 @@ export default defineConfig(async function determineConfig(
 				ssr: {external: true},
 			} as const satisfies UserConfig;
 		}
+		case `production`: {
+			return {
+				build: {
+					minify: false,
+					rolldownOptions: {
+						experimental: {chunkOptimization: false},
+						external: [],
+						treeshake: true,
+					},
+				},
+				experimental: {},
+				plugins: svelteKitPlugins,
+				ssr: {external: true},
+			} as const satisfies UserConfig;
+		}
 		default: {
 			const error: Error = new Error(`Unknown Vite mode: ${env.mode}`);
 			throw error;
