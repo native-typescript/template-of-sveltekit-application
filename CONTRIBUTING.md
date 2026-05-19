@@ -8,6 +8,7 @@
 - [.gitignore](https://git-scm.com/docs/gitignore);
 - [.prettierignore](https://prettier.io/docs/ignore.html);
 - [.stylelintignore](https://stylelint.io/user-guide/ignore-code/#files-entirely);
+- [.svelte-kit](https://svelte.dev/docs/kit/project-structure#Other-files-.svelte-kit);
 - [.vscode](https://code.visualstudio.com/docs/configure/settings#_workspace-settings) – Configuration of [Visual Studio Code](https://code.visualstudio.com);
 - [commitlint.config.ts](https://commitlint.js.org/reference/configuration.html#config-via-file) – Configuration of [commitlint](https://commitlint.js.org);
 - [CONTRIBUTING.md](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors);
@@ -26,18 +27,26 @@
 - source – Source code;
   - client – Client code;
     - core – Core modules;
+    - hooks.ts – [SvelteKit](https://kit.svelte.dev) hooks;
+    - HTML-templates – [SvelteKit](https://kit.svelte.dev) HTML templates;
+      - error – Error HTML template;
+      - success – Success HTML template;
     - index.ts – Index;
     - module.ts – Module;
   - index.ts – Index;
   - module.ts – Module;
+  - routes – [SvelteKit](https://kit.svelte.dev) routes;
   - server – Server-only code;
     - core – Core modules;
     - entrypoint.ts – Entrypoint;
+    - hooks.ts – [SvelteKit](https://kit.svelte.dev) hooks;
     - importing-instances – Allows importing the instances with a function call;
     - index.ts – Index;
     - instances – Instances of the core modules;
     - module.ts – Module;
+  - static-assets – Static assets to be served by the application;
 - [stylelint.config.ts](https://stylelint.io/user-guide/configure) – Configuration of [Stylelint](https://stylelint.io);
+- [svelte.config.ts](https://svelte.dev/docs/kit/configuration) – [Svelte](https://svelte.dev/) configuration;
 - testing – Testing code;
   - core – Core modules;
   - docker-compose.yaml – Configuration of [Docker Compose](https://docs.docker.com/compose) for the tests;
@@ -47,6 +56,7 @@
   - instances – Instances of the core modules;
   - module.ts – Module;
 - [tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) – Configuration of [TypeScript](https://www.typescriptlang.org);
+- [vite.config.ts](https://vite.dev/config/) – Configuration of [Vite](https://vitejs.dev);
 
 ## Development setup
 
@@ -145,13 +155,30 @@ to make a release.
 
 ### Starting
 
+#### Development
+
 Run
 
 ```
-npm run start
+npm run start:development
 ```
 
-to start the application.
+to start the application in the development mode.
+
+##### Environment variables
+
+The development process can be configured via [environment variables](https://en.wikipedia.org/wiki/Environment_variable).
+
+###### List
+
+- `SERVER__BIND__ADDRESS`: Address/interface the internal HTTP server should bind to;
+- `SERVER__BIND__PORT__NUMBER`: Port that the internal HTTP server listens on;
+- `SERVER__BIND__PORT__TLS__IS_ENABLED`: Whether the internal HTTP server uses TLS. The following values are possible:
+  - `no`: TLS is disabled;
+  - `yes`: TLS is enabled. Then you must also set the following variables:
+    - `SERVER__BIND__PORT__TLS__INTERMEDIATE_CA__CERTIFICATE`: The certificate of the intermediate CA;
+    - `SERVER__BIND__PORT__TLS__SERVER__CERTIFICATE`: The certificate of the server;
+    - `SERVER__BIND__PORT__TLS__SERVER__PRIVATE_KEY`: The private key of the server;
 
 ### Stylelint
 
@@ -177,6 +204,20 @@ npm run stylelint:fix
 ```
 
 to automatically fix style linting issues in the codebase where possible.
+
+### SvelteKit
+
+[SvelteKit](https://kit.svelte.dev) is used as the web framework.
+
+#### Checking
+
+Run
+
+```
+npm run sveltekit:check
+```
+
+to perform type checking for all files and, for Svelte files, also additional linting.
 
 ### Testing
 
@@ -225,13 +266,3 @@ The tests can be configured via [environment variables](https://en.wikipedia.org
 ### TypeScript
 
 [TypeScript](https://www.typescriptlang.org) is used for development.
-
-#### Checking
-
-Run
-
-```
-npm run typescript:check
-```
-
-to perform type checking.
