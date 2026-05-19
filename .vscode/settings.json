@@ -1,6 +1,6 @@
 {
 	"typescript.tsdk": "./node_modules/typescript/lib",
 	"stylelint.enable": true,
-	"stylelint.snippet": ["css", "scss"],
-	"stylelint.validate": ["css", "scss"]
+	"stylelint.snippet": ["css", "scss", "svelte"],
+	"stylelint.validate": ["css", "scss", "svelte"]
 }
