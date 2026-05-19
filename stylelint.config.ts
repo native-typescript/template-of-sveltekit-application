@@ -4,6 +4,7 @@ export default {
 	overrides: [
 		{customSyntax: `postcss-html`, files: [`**/*.html`]},
 		{customSyntax: `postcss-scss`, files: [`**/*.scss`]},
+		{customSyntax: `postcss-html`, files: [`**/*.svelte`]},
 	],
 	plugins: [`stylelint-order`],
 	referenceFiles: [],
