@@ -1,3 +1,8 @@
-import type {NodeAdapterOfConfigurationOfEnvironmentOfBuilding} from "../implementations/index.ts";
+import type {
+	NodeAdapterOfConfigurationOfEnvironmentOfBuilding,
+	StaticAdapterOfConfigurationOfEnvironmentOfBuilding,
+} from "../implementations/index.ts";
 export type SupportedAdapterOfConfigurationOfEnvironmentOfBuilding =
-	NodeAdapterOfConfigurationOfEnvironmentOfBuilding | null;
+	| NodeAdapterOfConfigurationOfEnvironmentOfBuilding
+	| null
+	| StaticAdapterOfConfigurationOfEnvironmentOfBuilding;

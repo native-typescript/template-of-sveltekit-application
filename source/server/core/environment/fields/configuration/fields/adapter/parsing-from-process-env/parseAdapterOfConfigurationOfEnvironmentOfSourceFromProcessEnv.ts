@@ -1,5 +1,8 @@
 import type {schemaForProcessEnvOfSource} from "../../../../../../schema-for-process-env/index.ts";
-import type {NodeAdapterOfConfigurationOfEnvironmentOfSource} from "../implementations/index.ts";
+import type {
+	NodeAdapterOfConfigurationOfEnvironmentOfSource,
+	StaticAdapterOfConfigurationOfEnvironmentOfSource,
+} from "../implementations/index.ts";
 import type {SupportedAdapterOfConfigurationOfEnvironmentOfSource} from "../supported/index.ts";
 import type {z} from "zod";
 export function parseAdapterOfConfigurationOfEnvironmentOfSourceFromProcessEnv(
@@ -11,6 +14,11 @@ export function parseAdapterOfConfigurationOfEnvironmentOfSourceFromProcessEnv(
 				id: `node`,
 			};
 			return adapter;
+		}
+		case `static`: {
+			const adapterOfConfiguration: StaticAdapterOfConfigurationOfEnvironmentOfSource =
+				{id: `static`};
+			return adapterOfConfiguration;
 		}
 		case null: {
 			return null;

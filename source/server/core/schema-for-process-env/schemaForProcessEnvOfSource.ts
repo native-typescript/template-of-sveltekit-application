@@ -40,4 +40,7 @@ export const schemaForProcessEnvOfSource =
 				.transform(function addAdapterName(part) {
 					return {...part, ADAPTER__NAME: `Node`} as const;
 				}),
+			static: z.object({}).transform(function addAdapterName(part) {
+				return {...part, ADAPTER__NAME: `static`} as const;
+			}),
 		}[idOfAdapterAtBuildingTime];

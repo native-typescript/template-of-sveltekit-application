@@ -1,0 +1,1 @@
+export {parseWithStaticAdapterConfigurationOfEnvironmentOfBuildingFromProcessEnv} from "./parseWithStaticAdapterConfigurationOfEnvironmentOfBuildingFromProcessEnv.ts";
