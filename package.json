@@ -7,6 +7,9 @@
 	"bugs": {
 		"url": "https://github.com/native-typescript/template-of-sveltekit-application/issues"
 	},
+	"dependencies": {
+		"zod": "4.3.6"
+	},
 	"devDependencies": {
 		"@commitlint/cli": "20.5.0",
 		"@commitlint/types": "20.5.0",
@@ -26,8 +29,7 @@
 		"release-it": "19.2.4",
 		"testcontainers": "11.14.0",
 		"typescript": "5.9.3",
-		"typescript-eslint": "8.57.2",
-		"zod": "4.3.6"
+		"typescript-eslint": "8.57.2"
 	},
 	"engines": {
 		"node": ">=24.14.0",
