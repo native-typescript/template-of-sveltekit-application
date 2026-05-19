@@ -1,7 +1,9 @@
 import type {
 	WithNodeAdapterConfigurationOfEnvironmentOfBuilding,
 	WithoutAdapterConfigurationOfEnvironmentOfBuilding,
+	WithStaticAdapterConfigurationOfEnvironmentOfBuilding,
 } from "../implementations/index.ts";
 export type SupportedConfigurationOfEnvironmentOfBuilding =
 	| WithNodeAdapterConfigurationOfEnvironmentOfBuilding
-	| WithoutAdapterConfigurationOfEnvironmentOfBuilding;
+	| WithoutAdapterConfigurationOfEnvironmentOfBuilding
+	| WithStaticAdapterConfigurationOfEnvironmentOfBuilding;

@@ -85,6 +85,7 @@ The building process is configured via [environment variables](https://en.wikipe
 
 - `ADAPTER__NAME`: The name of the adapter to use. The following values are possible:
   - `Node`: Use [the Node.js adapter](https://svelte.dev/docs/kit/adapter-node);
+  - `static`: Use [the static adapter](https://kit.svelte.dev/docs/adapter-static);
 - `HOSTING__BASE_PATH`: Base path under which the application is hosted. Use an empty string for root hosting, or a value that starts with `/` such as `/app`;
 
 ### commitlint
@@ -332,3 +333,4 @@ The application can be configured via [environment variables](https://en.wikiped
         - `SERVER__BIND__PORT__TLS__INTERMEDIATE_CA__CERTIFICATE` - The certificate of the intermediate CA;
         - `SERVER__BIND__PORT__TLS__SERVER__CERTIFICATE` - The certificate of the server;
         - `SERVER__BIND__PORT__TLS__SERVER__PRIVATE_KEY` - The private key of the server;
+  - `static`: Use [the static adapter](https://kit.svelte.dev/docs/adapter-static);

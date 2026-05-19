@@ -6,6 +6,7 @@ import {
 import type {
 	WithNodeAdapterEnvironmentOfSource,
 	WithoutAdapterEnvironmentOfSource,
+	WithStaticAdapterEnvironmentOfSource,
 } from "../implementations/index.ts";
 import type {SupportedEnvironmentOfSource} from "../supported/index.ts";
 import type {z} from "zod";
@@ -26,6 +27,13 @@ export function createEnvironmentOfSourceFromProcessEnv(
 			const environment: WithoutAdapterEnvironmentOfSource = {
 				configuration: configurationOfEnvironment,
 				type: `withoutAdapter`,
+			};
+			return environment;
+		}
+		case `withStaticAdapter`: {
+			const environment: WithStaticAdapterEnvironmentOfSource = {
+				configuration: configurationOfEnvironment,
+				type: `withStaticAdapter`,
 			};
 			return environment;
 		}

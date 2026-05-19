@@ -13,6 +13,9 @@ if (dev) {
 		case `withoutAdapter`: {
 			break;
 		}
+		case `withStaticAdapter`: {
+			break;
+		}
 	}
 } else {
 	if (building) {
@@ -32,6 +35,9 @@ if (dev) {
 				break;
 			}
 			case `withoutAdapter`: {
+				break;
+			}
+			case `withStaticAdapter`: {
 				break;
 			}
 		}
