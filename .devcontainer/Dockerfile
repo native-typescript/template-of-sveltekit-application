@@ -18,4 +18,5 @@ RUN rm -rf /tmp/node.tar.xz /tmp/node-v${NODE_JS__VERSION}-linux-x64
 RUN groupadd -g 969 docker
 RUN usermod -aG docker developer
 RUN apt-get update && apt-get install -y --no-install-recommends docker-cli docker-compose
+RUN npx playwright install --with-deps
 USER developer
