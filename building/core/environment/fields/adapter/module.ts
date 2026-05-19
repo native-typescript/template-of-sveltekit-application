@@ -1,1 +1,1 @@
-export type * as adapter_ from "./index.ts";
+export * as adapter_ from "./index.ts";

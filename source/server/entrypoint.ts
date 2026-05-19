@@ -1,5 +1,5 @@
 import {building, dev} from "$app/environment";
-import type {core_} from "./core/module.ts";
+import {core_} from "./core/module.ts";
 import {importingInstances_} from "./importing-instances/module.ts";
 if (dev) {
 	const {instances_} = await importingInstances_.import_();
@@ -8,7 +8,10 @@ if (dev) {
 	switch (environment.modeOfOperation) {
 		case `dynamic`: {
 			switch (environment.typeOfAdapter) {
-				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+				case `node`: {
+					await core_.runningEntrypoint_.run(environment);
+					break;
+				}
 				case `none`: {
 					break;
 				}
@@ -17,7 +20,9 @@ if (dev) {
 		}
 		case `static`: {
 			switch (environment.typeOfAdapter) {
-				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+				case `node`: {
+					break;
+				}
 				case `none`: {
 					break;
 				}
@@ -33,7 +38,9 @@ if (dev) {
 		switch (environment.modeOfOperation) {
 			case `dynamic`: {
 				switch (environment.typeOfAdapter) {
-					// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+					case `node`: {
+						break;
+					}
 					case `none`: {
 						break;
 					}
@@ -42,7 +49,9 @@ if (dev) {
 			}
 			case `static`: {
 				switch (environment.typeOfAdapter) {
-					// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+					case `node`: {
+						break;
+					}
 					case `none`: {
 						break;
 					}
@@ -57,7 +66,15 @@ if (dev) {
 		switch (environment.modeOfOperation) {
 			case `dynamic`: {
 				switch (environment.typeOfAdapter) {
-					// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+					case `node`: {
+						await Promise.all([
+							core_.runningEntrypoint_.run(environment),
+							core_.runningServer_.runningIfIsEnabled_.run(
+								environment.configurationOfAdapter.server,
+							),
+						]);
+						break;
+					}
 					case `none`: {
 						break;
 					}
@@ -66,7 +83,12 @@ if (dev) {
 			}
 			case `static`: {
 				switch (environment.typeOfAdapter) {
-					// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+					case `node`: {
+						await core_.runningServer_.runningIfIsEnabled_.run(
+							environment.configurationOfAdapter.server,
+						);
+						break;
+					}
 					case `none`: {
 						break;
 					}

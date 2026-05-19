@@ -1,0 +1,14 @@
+import type {fields_} from "../../fields/module.ts";
+import type {Server} from "../../Server.ts";
+import type {schema} from "../schema.ts";
+export function parse(processEnv: typeof schema.infer): Server {
+	const certificateOfServer =
+		processEnv.ADAPTER__SERVER__BIND__PORT__TLS__SERVER__CERTIFICATE satisfies fields_.certificate_.Certificate;
+	const privateKeyOfServer =
+		processEnv.ADAPTER__SERVER__BIND__PORT__TLS__SERVER__PRIVATE_KEY satisfies fields_.privateKey_.PrivateKey;
+	const server = {
+		certificate: certificateOfServer,
+		privateKey: privateKeyOfServer,
+	} as const satisfies Server;
+	return server;
+}
