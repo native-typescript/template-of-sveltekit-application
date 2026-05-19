@@ -717,15 +717,21 @@ export default [
 					zones: [
 						{
 							except: [],
-							from: `./!(development|node_modules)/**/*`,
-							message: `The development code should not import non-development code.`,
-							target: `./development/**/*`,
+							from: `./!(building|node_modules)/**/*`,
+							message: `The building code should not import non-building code.`,
+							target: `./building/**/*`,
 						},
 						{
 							except: [],
-							from: `./!(node_modules|source)/**/*`,
-							message: `The source code should not import non-source code.`,
+							from: `./!(building|node_modules|source)/**/*`,
+							message: `The source code should not import non-building code or non-source code.`,
 							target: `./source/**/!(*.test.ts)`,
+						},
+						{
+							except: [],
+							from: `./!(development|node_modules)/**/*`,
+							message: `The development code should not import non-development code.`,
+							target: `./development/**/*`,
 						},
 						{
 							except: [],
@@ -738,6 +744,12 @@ export default [
 							from: `./**/*.test.ts`,
 							message: `Test suites should not be imported.`,
 							target: `./**/*.ts`,
+						},
+						{
+							except: [],
+							from: `./building/instances/**/*`,
+							message: `Core code in building should not import instances.`,
+							target: `./building/core/**/*`,
 						},
 						{
 							except: [],
@@ -1493,5 +1505,5 @@ export default [
 			"import-x/no-default-export": [`off`],
 		},
 	},
-	{ignores: [`./.git`, `./.svelte-kit`, `./node_modules`]},
+	{ignores: [`./.git`, `./.svelte-kit`, `./build`, `./node_modules`]},
 ] as const satisfies readonly Linter.Config[];

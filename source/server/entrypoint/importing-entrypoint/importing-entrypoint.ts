@@ -1,9 +1,28 @@
-import {dev} from "$app/environment";
-import {runEntrypointOfSource} from "../running-entrypoint/index.ts";
+import {building, dev} from "$app/environment";
 if (dev) {
-	await runEntrypointOfSource();
+	const {environmentOfSource: environment} = await import(
+		`../../instances/environment/environmentOfSource.ts`
+	);
+	switch (environment.type) {
+		/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+		case `withoutAdapter`: {
+			break;
+		}
+	}
 } else {
-	/*
-		Not supported yet.
-	*/
+	if (building) {
+		/*
+			Building should not have an entrypoint.
+		*/
+	} else {
+		const {environmentOfSource: environment} = await import(
+			`../../instances/environment/environmentOfSource.ts`
+		);
+		switch (environment.type) {
+			/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+			case `withoutAdapter`: {
+				break;
+			}
+		}
+	}
 }

@@ -1,0 +1,1 @@
+export {parseHostingOfConfigurationOfEnvironmentOfBuildingFromProcessEnv} from "./parseHostingOfConfigurationOfEnvironmentOfBuildingFromProcessEnv.ts";

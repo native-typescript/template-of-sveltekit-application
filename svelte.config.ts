@@ -1,9 +1,14 @@
 import type {Config} from "@sveltejs/kit";
 import {vitePreprocess} from "@sveltejs/vite-plugin-svelte";
+const {environmentOfBuilding: environment} = await import(
+	`./building/index.ts`
+);
 const vitePreprocessor = vitePreprocess({});
 export default {
 	compilerOptions: {runes: true},
 	kit: {
+		/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+		...(environment.adapter === null ? {} : {adapter: environment.adapter}),
 		csrf: {trustedOrigins: []},
 		env: {dir: `.`},
 		files: {
@@ -18,7 +23,11 @@ export default {
 			routes: `./source/routes`,
 			src: `./source`,
 		},
-		paths: {assets: ``, base: ``, relative: false},
+		paths: {
+			assets: ``,
+			base: environment.configuration.hosting.basePath,
+			relative: false,
+		},
 	},
 	preprocess: [vitePreprocessor],
 	vitePlugin: {prebundleSvelteLibraries: false},

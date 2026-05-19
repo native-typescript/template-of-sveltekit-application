@@ -4,6 +4,10 @@ import type {z} from "zod";
 export function parseAdapterOfConfigurationOfEnvironmentOfSourceFromProcessEnv(
 	processEnv: z.output<typeof schemaForProcessEnvOfSource>,
 ): SupportedAdapterOfConfigurationOfEnvironmentOfSource {
-	const error: Error = new Error();
-	throw error;
+	switch (processEnv.ADAPTER__NAME) {
+		/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+		case null: {
+			return null;
+		}
+	}
 }
