@@ -26,6 +26,9 @@ if (dev) {
 				case `none`: {
 					break;
 				}
+				case `static`: {
+					break;
+				}
 			}
 			break;
 		}
@@ -53,6 +56,9 @@ if (dev) {
 						break;
 					}
 					case `none`: {
+						break;
+					}
+					case `static`: {
 						break;
 					}
 				}
@@ -90,6 +96,9 @@ if (dev) {
 						break;
 					}
 					case `none`: {
+						break;
+					}
+					case `static`: {
 						break;
 					}
 				}

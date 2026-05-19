@@ -7,6 +7,8 @@ export const schema = z.union([
 		.schemaForProcessEnv_.schema,
 	implementations_.withStaticModeOfOperationWithNodeAdapter_
 		.schemaForProcessEnv_.schema,
+	implementations_.withStaticModeOfOperationWithStaticAdapter_
+		.schemaForProcessEnv_.schema,
 	implementations_.withStaticModeOfOperationWithoutAdapter_.schemaForProcessEnv_
 		.schema,
 ]);
