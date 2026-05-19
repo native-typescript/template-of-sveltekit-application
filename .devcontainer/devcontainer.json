@@ -23,7 +23,7 @@
 	"otherPortsAttributes": {},
 	"overrideCommand": true,
 	"portsAttributes": {},
-	"postCreateCommand": "npm clean-install && . ~/.bashrc && npm run sveltekit:synchronize",
+	"postCreateCommand": "npm clean-install && . ~/.bashrc && npm run sveltekit:synchronize && npx playwright install",
 	"privileged": false,
 	"remoteEnv": {},
 	"remoteUser": "developer",
