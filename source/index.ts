@@ -1,2 +1,2 @@
-export * from "./core/module.ts";
-export * from "./instances/module.ts";
+export * from "./client/module.ts";
+export * from "./server/module.ts";

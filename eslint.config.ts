@@ -4,7 +4,9 @@ import typescriptParser from "@typescript-eslint/parser";
 import type {Linter} from "eslint";
 import {importX} from "eslint-plugin-import-x";
 import perfectionistPlugin from "eslint-plugin-perfectionist";
+import sveltePlugin from "eslint-plugin-svelte";
 import unusedImportsPlugin from "eslint-plugin-unused-imports";
+import svelteParser from "svelte-eslint-parser";
 export default [
 	{
 		plugins: {
@@ -59,10 +61,6 @@ export default [
 			"@stylistic/no-mixed-operators": [
 				`warn`,
 				{allowSamePrecedence: false, groups: []},
-			],
-			"@stylistic/no-multiple-empty-lines": [
-				`warn`,
-				{max: 0, maxBOF: 0, maxEOF: 0},
 			],
 			"@stylistic/padding-line-between-statements": [
 				`warn`,
@@ -294,17 +292,6 @@ export default [
 				{allow: [], allowAsImport: false},
 			],
 			"@typescript-eslint/no-restricted-types": [`warn`, {}],
-			"@typescript-eslint/no-shadow": [
-				`warn`,
-				{
-					allow: [],
-					builtinGlobals: true,
-					hoist: `all`,
-					ignoreFunctionTypeParameterNameValueShadow: false,
-					ignoreOnInitialization: true,
-					ignoreTypeValueShadow: false,
-				},
-			],
 			"@typescript-eslint/no-unnecessary-boolean-literal-compare": [
 				`warn`,
 				{
@@ -329,14 +316,9 @@ export default [
 			"@typescript-eslint/no-unnecessary-type-parameters": [`warn`],
 			"@typescript-eslint/no-unsafe-argument": [`warn`],
 			"@typescript-eslint/no-unsafe-assignment": [`warn`],
-			"@typescript-eslint/no-unsafe-call": [`warn`],
 			"@typescript-eslint/no-unsafe-declaration-merging": [`warn`],
 			"@typescript-eslint/no-unsafe-enum-comparison": [`warn`],
 			"@typescript-eslint/no-unsafe-function-type": [`warn`],
-			"@typescript-eslint/no-unsafe-member-access": [
-				`warn`,
-				{allowOptionalChaining: false},
-			],
 			"@typescript-eslint/no-unsafe-return": [`warn`],
 			"@typescript-eslint/no-unsafe-type-assertion": [`warn`],
 			"@typescript-eslint/no-unsafe-unary-minus": [`warn`],
@@ -572,6 +554,12 @@ export default [
 						},
 						{
 							except: [],
+							from: `./!(development|node_modules)/**/*`,
+							message: `The development code should not import non-development code.`,
+							target: `./development/**/*`,
+						},
+						{
+							except: [],
 							from: `./!(node_modules|source|testing)/**/*`,
 							message: `The testing code should not import non-source code or non-testing code.`,
 							target: `./testing/**/*`,
@@ -584,9 +572,21 @@ export default [
 						},
 						{
 							except: [],
-							from: `./source/instances/**/*`,
-							message: `Core code should not import instances.`,
-							target: `./source/core/**/*`,
+							from: `./development/instances/**/*`,
+							message: `Core code in development should not import instances.`,
+							target: `./development/core/**/*`,
+						},
+						{
+							except: [],
+							from: `./source/server/**/*`,
+							message: `Client code in source should not import server code.`,
+							target: `./source/client/**/*`,
+						},
+						{
+							except: [],
+							from: `./source/server/instances/**/*`,
+							message: `Core code in source/server should not import instances.`,
+							target: `./source/server/core/**/*`,
 						},
 						{
 							except: [],
@@ -1133,10 +1133,28 @@ export default [
 		files: [`./**/*.{js,ts}`],
 		languageOptions: {
 			parser: typescriptParser,
-			parserOptions: {extraFileExtensions: [], project: `./tsconfig.json`},
+			parserOptions: {
+				extraFileExtensions: [`svelte`],
+				project: `./tsconfig.json`,
+			},
 			sourceType: `module`,
 		},
-		rules: {},
+		rules: {
+			"@stylistic/no-multiple-empty-lines": [
+				`warn`,
+				{max: 0, maxBOF: 0, maxEOF: 0},
+			],
+			"@typescript-eslint/no-unsafe-call": [`warn`],
+			"@typescript-eslint/no-unsafe-member-access": [
+				`warn`,
+				{allowOptionalChaining: false},
+			],
+			"no-inner-declarations": [
+				`warn`,
+				`both`,
+				{blockScopedFunctions: `disallow`},
+			],
+		},
 	},
 	{
 		files: [`./**/*.js`],
@@ -1146,7 +1164,171 @@ export default [
 		},
 	},
 	{
-		files: [`./**/!(index|module).{js,ts}`],
+		files: [`./**/*.svelte`],
+		languageOptions: {
+			parser: svelteParser,
+			parserOptions: {
+				extraFileExtensions: [`svelte`],
+				parser: typescriptParser,
+				project: `./tsconfig.json`,
+				sourceType: `module`,
+			},
+			sourceType: `module`,
+		},
+		plugins: {"svelte": sveltePlugin},
+		rules: {
+			"svelte/block-lang": [
+				`warn`,
+				{
+					enforceScriptPresent: true,
+					enforceStylePresent: true,
+					script: [`ts`],
+					style: `scss`,
+				},
+			],
+			"svelte/button-has-type": [
+				`warn`,
+				{button: true, reset: true, submit: true},
+			],
+			"svelte/comment-directive": [
+				`warn`,
+				{reportUnusedDisableDirectives: true},
+			],
+			"svelte/consistent-selector-style": [
+				`warn`,
+				{checkGlobal: true, style: [`type`, `id`, `class`]},
+			],
+			"svelte/derived-has-same-inputs-outputs": [`warn`],
+			"svelte/experimental-require-slot-types": [`warn`],
+			"svelte/html-self-closing": [`warn`, `html`],
+			"svelte/infinite-reactive-loop": [`warn`],
+			"svelte/mustache-spacing": [
+				`warn`,
+				{
+					attributesAndProps: `never`,
+					directiveExpressions: `never`,
+					tags: {closingBrace: `never`, openingBrace: `never`},
+					textExpressions: `never`,
+				},
+			],
+			"svelte/no-add-event-listener": [`warn`],
+			"svelte/no-at-debug-tags": [`warn`],
+			"svelte/no-at-html-tags": [`warn`],
+			"svelte/no-dom-manipulating": [`warn`],
+			"svelte/no-dupe-else-if-blocks": [`warn`],
+			"svelte/no-dupe-on-directives": [`warn`],
+			"svelte/no-dupe-style-properties": [`warn`],
+			"svelte/no-dupe-use-directives": [`warn`],
+			"svelte/no-export-load-in-svelte-module-in-kit-pages": [`warn`],
+			"svelte/no-ignored-unsubscribe": [`warn`],
+			"svelte/no-immutable-reactive-statements": [`warn`],
+			"svelte/no-inline-styles": [`warn`, {allowTransitions: false}],
+			"svelte/no-inner-declarations": [
+				`warn`,
+				`both`,
+				{blockScopedFunctions: `disallow`},
+			],
+			"svelte/no-inspect": [`warn`],
+			"svelte/no-navigation-without-resolve": [
+				`warn`,
+				{
+					ignoreGoto: false,
+					ignoreLinks: false,
+					ignorePushState: false,
+					ignoreReplaceState: false,
+				},
+			],
+			"svelte/no-not-function-handler": [`warn`],
+			"svelte/no-object-in-text-mustaches": [`warn`],
+			"svelte/no-raw-special-elements": [`warn`],
+			"svelte/no-reactive-functions": [`warn`],
+			"svelte/no-reactive-literals": [`warn`],
+			"svelte/no-reactive-reassign": [`warn`, {props: true}],
+			"svelte/no-shorthand-style-property-overrides": [`warn`],
+			"svelte/no-spaces-around-equal-signs-in-attribute": [`warn`],
+			"svelte/no-store-async": [`warn`],
+			"svelte/no-svelte-internal": [`warn`],
+			"svelte/no-target-blank": [
+				`warn`,
+				{allowReferrer: false, enforceDynamicLinks: `always`},
+			],
+			"svelte/no-top-level-browser-globals": [`warn`],
+			"svelte/no-trailing-spaces": [
+				`warn`,
+				{ignoreComments: false, skipBlankLines: false},
+			],
+			"svelte/no-unknown-style-directive-property": [
+				`warn`,
+				{ignorePrefixed: false},
+			],
+			"svelte/no-unnecessary-state-wrap": [
+				`warn`,
+				{additionalReactiveClasses: [], allowReassign: false},
+			],
+			"svelte/no-unused-class-name": [`warn`, {allowedClassNames: []}],
+			"svelte/no-unused-svelte-ignore": [`warn`],
+			"svelte/no-useless-children-snippet": [`warn`],
+			"svelte/no-useless-mustaches": [
+				`warn`,
+				{ignoreIncludesComment: false, ignoreStringEscape: false},
+			],
+			"svelte/prefer-class-directive": [`warn`, {prefer: `always`}],
+			"svelte/prefer-const": [
+				`warn`,
+				{
+					additionalProperties: false,
+					destructuring: `any`,
+					excludedRunes: [],
+					ignoreReadBeforeAssign: false,
+				},
+			],
+			"svelte/prefer-destructured-store-props": [`warn`],
+			"svelte/prefer-style-directive": [`warn`],
+			"svelte/prefer-svelte-reactivity": [`warn`],
+			"svelte/prefer-writable-derived": [`warn`],
+			"svelte/require-each-key": [`warn`],
+			"svelte/require-event-dispatcher-types": [`warn`],
+			"svelte/require-optimized-style-attribute": [`warn`],
+			"svelte/require-store-callbacks-use-set-param": [`warn`],
+			"svelte/require-store-reactive-access": [`warn`],
+			"svelte/require-stores-init": [`warn`],
+			"svelte/shorthand-attribute": [`warn`, {prefer: `never`}],
+			"svelte/shorthand-directive": [`warn`, {prefer: `never`}],
+			"svelte/sort-attributes": [
+				`warn`,
+				{order: [{match: [`/^.+$/u`], sort: `alphabetical`}]},
+			],
+			"svelte/spaced-html-comment": [`warn`, `always`],
+			"svelte/system": [`warn`],
+			"svelte/valid-compile": [`warn`, {ignoreWarnings: false}],
+			"svelte/valid-each-key": [`warn`],
+			"svelte/valid-prop-names-in-kit-pages": [`warn`],
+			"svelte/valid-style-parse": [`warn`],
+		},
+	},
+	{
+		files: [
+			`./!(source)/**/*.{js,svelte,ts}`,
+			`./*.{js,svelte,ts}`,
+			`./source/!(client)/**/*.{js,svelte,ts}`,
+			`./source/*.{js,svelte,ts}`,
+		],
+		rules: {
+			"@typescript-eslint/no-shadow": [
+				`warn`,
+				{
+					allow: [`Console`, `Element`, `Plugin`],
+					builtinGlobals: true,
+					hoist: `all`,
+					ignoreFunctionTypeParameterNameValueShadow: false,
+					ignoreOnInitialization: true,
+					ignoreTypeValueShadow: false,
+				},
+			],
+		},
+	},
+	{
+		files: [`./**/!(index|module).{js,ts}`, `./**/*.svelte`],
 		rules: {
 			"no-restricted-imports": [
 				`warn`,
@@ -1283,6 +1465,120 @@ export default [
 		},
 	},
 	{
+		files: [`./source/client/**/*.{js,svelte,ts}`],
+		rules: {
+			"@typescript-eslint/no-shadow": [
+				`warn`,
+				{
+					allow: [],
+					builtinGlobals: true,
+					hoist: `all`,
+					ignoreFunctionTypeParameterNameValueShadow: false,
+					ignoreOnInitialization: true,
+					ignoreTypeValueShadow: false,
+				},
+			],
+		},
+	},
+	{
+		files: [`./source/routes/**/*.{js,svelte,ts}`],
+		rules: {
+			"no-restricted-imports": [
+				`warn`,
+				{
+					patterns: [
+						{
+							message: `Do not use a shallower index file.`,
+							regex: `^\\.\\.\\/(?:(?:\\.\\.\\/){0,})index\\.ts$`,
+						},
+						{
+							message: `Do not use a shallower module file.`,
+							regex: `^\\.\\.\\/(?:(?:\\.\\.\\/){0,})module\\.ts$`,
+						},
+						{
+							message: `Index files are not allowed under the "routes" directory.`,
+							regex: `^\\.\\/index\\.ts$`,
+						},
+						{
+							message: `Module files are not allowed under the "routes" directory.`,
+							regex: `^\\.\\/module\\.ts$`,
+						},
+						{
+							message: `The import is too deep. Use a shallower module file.`,
+							regex: `^\\.\\.\\/(?:(?:\\.\\.\\/){0,})(?:(?:(?!\\.\\.\\/)[^\\/]+\\/){2,})module\\.ts$`,
+						},
+						{
+							message: `Module files are not allowed under the "routes" directory.`,
+							regex: `^\\.\\/(?:(?:[^\\/]+\\/){2,})module\\.ts$`,
+						},
+						{
+							message: `Use a module file.`,
+							regex: `^\\.\\.\\/(?:(?:\\.\\.\\/){0,})(?:(?:(?!\\.\\.)(?:[^\\/]+)\\/){1,})(?!module\\.ts$)[^\\/]+$`,
+						},
+					],
+				},
+			],
+		},
+	},
+	{
+		files: [`./source/routes/**/+server.{js,ts}`],
+		rules: {
+			"@typescript-eslint/naming-convention": [
+				`warn`,
+				{
+					format: [],
+					leadingUnderscore: `allowSingleOrDouble`,
+					modifiers: [],
+					prefix: [],
+					selector: [`objectLiteralMethod`, `objectLiteralProperty`],
+					suffix: [],
+					trailingUnderscore: `allowSingleOrDouble`,
+					types: [],
+				},
+				{
+					format: [`camelCase`],
+					leadingUnderscore: `forbid`,
+					modifiers: [],
+					prefix: [],
+					selector: [`default`],
+					suffix: [],
+					trailingUnderscore: `allow`,
+					types: [],
+				},
+				{
+					format: [`camelCase`, `PascalCase`],
+					leadingUnderscore: `forbid`,
+					modifiers: [],
+					prefix: [],
+					selector: [`import`],
+					suffix: [],
+					trailingUnderscore: `forbid`,
+					types: [],
+				},
+				{
+					format: [`camelCase`, `UPPER_CASE`],
+					leadingUnderscore: `forbid`,
+					modifiers: [],
+					prefix: [],
+					selector: [`function`],
+					suffix: [],
+					trailingUnderscore: `forbid`,
+					types: [],
+				},
+				{
+					format: [`PascalCase`],
+					leadingUnderscore: `forbid`,
+					modifiers: [],
+					prefix: [],
+					selector: [`typeLike`],
+					suffix: [],
+					trailingUnderscore: `forbid`,
+					types: [],
+				},
+			],
+		},
+	},
+	{
 		files: [`./commitlint.config.ts`],
 		rules: {"import-x/no-default-export": [`off`]},
 	},
@@ -1302,5 +1598,16 @@ export default [
 		files: [`./stylelint.config.ts`],
 		rules: {"import-x/no-default-export": [`off`]},
 	},
-	{ignores: [`./.git`, `./node_modules`]},
+	{
+		files: [`./svelte.config.ts`],
+		rules: {"import-x/no-default-export": [`off`]},
+	},
+	{
+		files: [`./vite.config.ts`],
+		rules: {
+			"import-x/no-anonymous-default-export": [`off`],
+			"import-x/no-default-export": [`off`],
+		},
+	},
+	{ignores: [`./.git`, `./.svelte-kit`, `./node_modules`]},
 ] as const satisfies readonly Linter.Config[];
