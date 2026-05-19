@@ -4,8 +4,7 @@ import type {WithoutAdapterConfiguration} from "../WithoutAdapterConfiguration.t
 import {z} from "zod";
 export const schema = z
 	.intersection(
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
-		schemaForProcessEnv_.schema as unknown as z.ZodUnknown,
+		schemaForProcessEnv_.schema,
 		z.object({ADAPTER__SHOULD_BE_USED: z.literal(`no`)}),
 	)
 	.transform<WithoutAdapterConfiguration>(

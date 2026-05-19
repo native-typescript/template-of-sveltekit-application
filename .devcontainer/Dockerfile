@@ -29,3 +29,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
 USER developer
 WORKDIR /home/developer/template-of-sveltekit-application
 ENV ADAPTER__SHOULD_BE_USED=no
+ENV HOSTING__BASE_PATH=
