@@ -1,10 +1,15 @@
 import {building, dev} from "$app/environment";
+import {runServer} from "../../core/index.ts";
+import {runEntrypointOfSource} from "../running-entrypoint/index.ts";
 if (dev) {
 	const {environmentOfSource: environment} = await import(
 		`../../instances/environment/environmentOfSource.ts`
 	);
 	switch (environment.type) {
-		/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+		case `withNodeAdapter`: {
+			await runEntrypointOfSource(environment);
+			break;
+		}
 		case `withoutAdapter`: {
 			break;
 		}
@@ -19,7 +24,13 @@ if (dev) {
 			`../../instances/environment/environmentOfSource.ts`
 		);
 		switch (environment.type) {
-			/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+			case `withNodeAdapter`: {
+				await Promise.all([
+					runServer(environment.configuration.server),
+					runEntrypointOfSource(environment),
+				]);
+				break;
+			}
 			case `withoutAdapter`: {
 				break;
 			}

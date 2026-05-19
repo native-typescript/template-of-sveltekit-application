@@ -1,6 +1,8 @@
 import type {schemaForProcessEnvOfBuilding} from "../../../../schema-for-process-env/index.ts";
 import {
+	parseWithNodeAdapterConfigurationOfEnvironmentOfBuildingFromProcessEnv,
 	parseWithoutAdapterConfigurationOfEnvironmentOfBuildingFromProcessEnv,
+	type WithNodeAdapterConfigurationOfEnvironmentOfBuilding,
 	type WithoutAdapterConfigurationOfEnvironmentOfBuilding,
 } from "../implementations/index.ts";
 import type {SupportedConfigurationOfEnvironmentOfBuilding} from "../supported/index.ts";
@@ -9,7 +11,13 @@ export function parseConfigurationOfEnvironmentOfBuildingFromProcessEnv(
 	processEnv: z.output<typeof schemaForProcessEnvOfBuilding>,
 ): SupportedConfigurationOfEnvironmentOfBuilding {
 	switch (processEnv.ADAPTER__NAME) {
-		/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+		case `Node`: {
+			const configuration: WithNodeAdapterConfigurationOfEnvironmentOfBuilding =
+				parseWithNodeAdapterConfigurationOfEnvironmentOfBuildingFromProcessEnv(
+					processEnv,
+				);
+			return configuration;
+		}
 		case null: {
 			const configuration: WithoutAdapterConfigurationOfEnvironmentOfBuilding =
 				parseWithoutAdapterConfigurationOfEnvironmentOfBuildingFromProcessEnv(

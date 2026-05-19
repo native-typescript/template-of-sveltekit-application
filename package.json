@@ -17,6 +17,7 @@
 		"@commitlint/types": "21.0.1",
 		"@release-it/conventional-changelog": "11.0.0",
 		"@stylistic/eslint-plugin": "5.10.0",
+		"@sveltejs/adapter-node": "5.5.4",
 		"@sveltejs/kit": "2.60.1",
 		"@sveltejs/vite-plugin-svelte": "7.1.2",
 		"@types/node": "25.9.1",
