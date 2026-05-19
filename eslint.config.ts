@@ -1209,5 +1209,9 @@ export default [
 		files: [`./release-it.config.ts`],
 		rules: {"import-x/no-default-export": [`off`]},
 	},
+	{
+		files: [`./stylelint.config.ts`],
+		rules: {"import-x/no-default-export": [`off`]},
+	},
 	{ignores: [`./.git`, `./node_modules`]},
 ] as const satisfies readonly Linter.Config[];
