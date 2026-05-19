@@ -10,6 +10,10 @@ export const schema =
 				.schemaForProcessEnv_.schema,
 		)
 		.or(
+			implementations_.withStaticModeOfOperationWithStaticAdapter_
+				.schemaForProcessEnv_.schema,
+		)
+		.or(
 			implementations_.withStaticModeOfOperationWithoutAdapter_
 				.schemaForProcessEnv_.schema,
 		);
