@@ -1,7 +1,10 @@
 import type {Config} from "stylelint";
 export default {
 	extends: [],
-	overrides: [{customSyntax: `postcss-html`, files: [`**/*.html`]}],
+	overrides: [
+		{customSyntax: `postcss-html`, files: [`**/*.html`]},
+		{customSyntax: `postcss-scss`, files: [`**/*.scss`]},
+	],
 	plugins: [`stylelint-order`],
 	referenceFiles: [],
 	rules: {
@@ -12,7 +15,29 @@ export default {
 		"at-rule-disallowed-list": [[]],
 		"at-rule-empty-line-before": [`never`, {except: [], ignore: []}],
 		"at-rule-no-deprecated": [true, {ignoreAtRules: []}],
-		"at-rule-no-unknown": [true, {ignoreAtRules: []}],
+		"at-rule-no-unknown": [
+			true,
+			{
+				ignoreAtRules: [
+					`at-root`,
+					`content`,
+					`debug`,
+					`each`,
+					`else`,
+					`error`,
+					`extend`,
+					`for`,
+					`function`,
+					`if`,
+					`include`,
+					`mixin`,
+					`return`,
+					`use`,
+					`warn`,
+					`while`,
+				],
+			},
+		],
 		"at-rule-no-vendor-prefix": [true, {ignoreAtRules: []}],
 		"at-rule-prelude-no-invalid": [true, {ignoreAtRules: []}],
 		"at-rule-property-required-list": {},
