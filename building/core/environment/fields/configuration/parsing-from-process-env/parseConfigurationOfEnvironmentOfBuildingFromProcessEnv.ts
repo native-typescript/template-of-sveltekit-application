@@ -2,8 +2,10 @@ import type {schemaForProcessEnvOfBuilding} from "../../../../schema-for-process
 import {
 	parseWithNodeAdapterConfigurationOfEnvironmentOfBuildingFromProcessEnv,
 	parseWithoutAdapterConfigurationOfEnvironmentOfBuildingFromProcessEnv,
+	parseWithStaticAdapterConfigurationOfEnvironmentOfBuildingFromProcessEnv,
 	type WithNodeAdapterConfigurationOfEnvironmentOfBuilding,
 	type WithoutAdapterConfigurationOfEnvironmentOfBuilding,
+	type WithStaticAdapterConfigurationOfEnvironmentOfBuilding,
 } from "../implementations/index.ts";
 import type {SupportedConfigurationOfEnvironmentOfBuilding} from "../supported/index.ts";
 import type {z} from "zod";
@@ -14,6 +16,13 @@ export function parseConfigurationOfEnvironmentOfBuildingFromProcessEnv(
 		case `Node`: {
 			const configuration: WithNodeAdapterConfigurationOfEnvironmentOfBuilding =
 				parseWithNodeAdapterConfigurationOfEnvironmentOfBuildingFromProcessEnv(
+					processEnv,
+				);
+			return configuration;
+		}
+		case `static`: {
+			const configuration: WithStaticAdapterConfigurationOfEnvironmentOfBuilding =
+				parseWithStaticAdapterConfigurationOfEnvironmentOfBuildingFromProcessEnv(
 					processEnv,
 				);
 			return configuration;
