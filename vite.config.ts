@@ -54,7 +54,7 @@ export default defineConfig(async function determineConfig(
 					},
 				},
 				define: {
-					__SHOULD_PRERENDER__: ({none: `auto`} as const)[
+					__SHOULD_PRERENDER__: ({node: false, none: `auto`} as const)[
 						building_.instances_.environment_.environment.typeOfAdapter
 					],
 				},

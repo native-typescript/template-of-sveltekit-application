@@ -1,4 +1,6 @@
 import type {implementations_} from "../implementations/module.ts";
 export type SupportedConfiguration =
+	| implementations_.withDynamicModeOfOperationWithNodeAdapter_.WithDynamicModeOfOperationWithNodeAdapterConfiguration
 	| implementations_.withDynamicModeOfOperationWithoutAdapter_.WithDynamicModeOfOperationWithoutAdapterConfiguration
+	| implementations_.withStaticModeOfOperationWithNodeAdapter_.WithStaticModeOfOperationWithNodeAdapterConfiguration
 	| implementations_.withStaticModeOfOperationWithoutAdapter_.WithStaticModeOfOperationWithoutAdapterConfiguration;

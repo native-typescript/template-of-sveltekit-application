@@ -1,10 +1,13 @@
 import type {configuration_} from "../../../configuration/module.ts";
 import type {WithoutAdapterEnvironment} from "../WithoutAdapterEnvironment.ts";
 export function create(
-	configuration: configuration_.implementations_.withoutAdapter_.WithoutAdapterConfiguration,
+	configuration: Extract<
+		configuration_.supported_.SupportedConfiguration,
+		{readonly type: `none`}
+	>,
 ): WithoutAdapterEnvironment {
 	const environment = {
-		adapter: configuration.adapter,
+		adapter: null,
 		configurationOfHosting: configuration.hosting,
 		typeOfAdapter: `none`,
 	} as const satisfies WithoutAdapterEnvironment;
