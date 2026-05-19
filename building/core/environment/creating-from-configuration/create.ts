@@ -5,13 +5,15 @@ export function create(
 	configuration: configuration_.supported_.SupportedConfiguration,
 ): supported_.SupportedEnvironment {
 	switch (configuration.type) {
-		/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+		case `withNodeAdapter`: {
+			return implementations_.withNodeAdapter_.createWithNodeAdapterEnvironment(
+				configuration,
+			);
+		}
 		case `withoutAdapter`: {
-			const environment =
-				implementations_.withoutAdapter_.createWithoutAdapterEnvironment(
-					configuration,
-				);
-			return environment;
+			return implementations_.withoutAdapter_.createWithoutAdapterEnvironment(
+				configuration,
+			);
 		}
 	}
 }

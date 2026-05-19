@@ -5,7 +5,14 @@ export function create(
 	configuration: configuration_.supported_.SupportedConfiguration,
 ): supported_.SupportedEnvironment {
 	switch (configuration.type) {
-		/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+		case `withNodeAdapter`: {
+			const environment: implementations_.withNodeAdapter_.WithNodeAdapterEnvironment =
+				{
+					configurationOfAdapter: configuration.adapter,
+					type: `withNodeAdapter`,
+				};
+			return environment;
+		}
 		case `withoutAdapter`: {
 			const environment: implementations_.withoutAdapter_.WithoutAdapterEnvironment =
 				{configurationOfAdapter: null, type: `withoutAdapter`};

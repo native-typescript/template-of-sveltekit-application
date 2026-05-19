@@ -5,7 +5,6 @@ const vitePreprocessor = vitePreprocess({});
 export default {
 	compilerOptions: {runes: true},
 	kit: {
-		/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
 		...(building_.instances_.environment_.environment.adapter === null ?
 			{}
 		:	{adapter: building_.instances_.environment_.environment.adapter}),

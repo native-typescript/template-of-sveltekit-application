@@ -1,13 +1,20 @@
 import {building, dev} from "$app/environment";
 import {core_} from "./core/module.ts";
 import {importingInstances_} from "./importing-instances/module.ts";
+import {runningEntrypoint_} from "./running-entrypoint/module.ts";
 if (dev) {
 	const instances_ = await importingInstances_.import_();
 	const environment = instances_.environment_.environment;
 	switch (environment.type) {
-		/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+		case `withNodeAdapter`: {
+			await runningEntrypoint_.run(environment);
+			break;
+		}
 		case `withoutAdapter`: {
-			await core_.runningEntrypoint_.run(instances_.environment_.environment);
+			/*
+				Development without adapter should not have an entrypoint.
+			*/
+			break;
 		}
 	}
 } else {
@@ -19,9 +26,18 @@ if (dev) {
 		const instances_ = await importingInstances_.import_();
 		const environment = instances_.environment_.environment;
 		switch (environment.type) {
-			/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+			case `withNodeAdapter`: {
+				await Promise.all([
+					core_.runningServer_.run(environment.configurationOfAdapter.server),
+					runningEntrypoint_.run(environment),
+				]);
+				break;
+			}
 			case `withoutAdapter`: {
-				await core_.runningEntrypoint_.run(instances_.environment_.environment);
+				/*
+					Production without adapter should not have an entrypoint.
+				*/
+				break;
 			}
 		}
 	}
