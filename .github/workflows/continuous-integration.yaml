@@ -126,6 +126,11 @@ jobs:
           npm ci --registry=https://registry.npmjs.org --//registry.npmjs.org/:_authToken=${{secrets.NPM__REGISTRY__ACCESS_TOKEN}}
       - env:
           NODE_OPTIONS: "--import=@native-typescript/loader-of-typescript-for-node-js"
+        name: "Install Playwright browsers"
+        run: |
+          npx playwright install
+      - env:
+          NODE_OPTIONS: "--import=@native-typescript/loader-of-typescript-for-node-js"
         name: "Run the test check"
         run: |
           npm run test:check

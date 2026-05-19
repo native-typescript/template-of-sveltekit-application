@@ -19,4 +19,6 @@ ARG DOCKER_GID
 RUN groupadd -g ${DOCKER_GID} docker
 RUN usermod -aG docker developer
 RUN apt-get update && apt-get install -y --no-install-recommends docker-cli docker-compose
+RUN apt-get update && apt-get install -y --no-install-recommends libatomic1
+RUN npx playwright install --with-deps
 USER developer

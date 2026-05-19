@@ -22,7 +22,7 @@
 	"otherPortsAttributes": {},
 	"overrideCommand": true,
 	"portsAttributes": {},
-	"postCreateCommand": "npm clean-install",
+	"postCreateCommand": "npm clean-install && npx playwright install",
 	"privileged": false,
 	"remoteEnv": {},
 	"remoteUser": "developer",
