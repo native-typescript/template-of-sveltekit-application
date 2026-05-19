@@ -39,6 +39,13 @@ export function create(
 						) satisfies implementations_.withStaticModeOfOperationWithoutAdapter_.WithStaticModeOfOperationWithoutAdapterEnvironment;
 					return environment;
 				}
+				case `static`: {
+					const environment =
+						implementations_.withStaticModeOfOperationWithStaticAdapter_.creatingFromConfiguration_.create(
+							configuration,
+						) satisfies implementations_.withStaticModeOfOperationWithStaticAdapter_.WithStaticModeOfOperationWithStaticAdapterEnvironment;
+					return environment;
+				}
 			}
 		}
 	}
