@@ -24,7 +24,18 @@ export default {
 			serviceWorker: `./source/service-worker/entrypoint.ts`,
 			src: `./source`,
 		},
-		paths: {assets: ``, base: ``, relative: false},
+		paths: {
+			assets: ``,
+			base:
+				(
+					building_.instances_.environment_.environment.configurationOfHosting
+						.basePath === null
+				) ?
+					``
+				:	building_.instances_.environment_.environment.configurationOfHosting
+						.basePath,
+			relative: false,
+		},
 	},
 	preprocess: [vitePreprocessor],
 	vitePlugin: {prebundleSvelteLibraries: false},
