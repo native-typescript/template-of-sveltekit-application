@@ -10,6 +10,12 @@
 - [.stylelintignore](https://stylelint.io/user-guide/ignore-code/#files-entirely);
 - [.svelte-kit](https://svelte.dev/docs/kit/project-structure#Other-files-.svelte-kit);
 - [.vscode](https://code.visualstudio.com/docs/configure/settings#_workspace-settings) – Configuration of [Visual Studio Code](https://code.visualstudio.com);
+- build – Files generated during [the build process](https://svelte.dev/docs/kit/building-your-app);
+- building – Building code;
+  - core – Core modules;
+  - index.ts – Index;
+  - instances – Instances of the core modules;
+  - module.ts – Module;
 - [commitlint.config.ts](https://commitlint.js.org/reference/configuration.html#config-via-file) – Configuration of [commitlint](https://commitlint.js.org);
 - [CONTRIBUTING.md](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors);
 - development – Development code;
@@ -33,6 +39,7 @@
       - success – Success HTML template;
     - index.ts – Index;
     - module.ts – Module;
+  - id-of-adapter;
   - index.ts – Index;
   - module.ts – Module;
   - routes – [SvelteKit](https://kit.svelte.dev) routes;
@@ -64,6 +71,25 @@
 2. Connect to the development container;
 
 ## Developing
+
+### Building
+
+Run
+
+```
+npm run build
+```
+
+to build the application. The built application will be placed in the `./build` directory.
+
+#### Environment variables
+
+The building process can be configured via [environment variables](https://en.wikipedia.org/wiki/Environment_variable).
+
+##### List
+
+- `ADAPTER__NAME`: The name of the adapter to use. The following values are possible:
+- `HOSTING__BASE_PATH`: Base path under which the application is hosted. Use an empty string for root hosting, or a value that starts with a `/` such as `/app`;
 
 ### commitlint
 
@@ -233,7 +259,7 @@ to perform testing for all tests.
 
 ##### Integration
 
-Integration tests are such that they do setup some external dependencies before running.
+Integration tests are such that they don't build the application and they do setup some external dependencies before running. They run against the source code directly.
 
 Run
 
@@ -245,7 +271,7 @@ to perform testing for integration tests.
 
 ##### Unit
 
-Unit tests are such that they don't setup any external dependencies before running.
+Unit tests are such that they don't build the application and they don't setup any external dependencies before running. They run against the source code directly.
 
 Run
 

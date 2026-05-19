@@ -40,9 +40,15 @@ export default defineConfig(async function determineConfig(
 		}
 		case `production`: {
 			return {
-				build: {rolldownOptions: {external: [], treeshake: false}},
+				build: {
+					minify: false,
+					rolldownOptions: {
+						experimental: {chunkOptimization: false},
+						external: [],
+						treeshake: true,
+					},
+				},
 				experimental: {},
-				optimizeDeps: {},
 				plugins: svelteKitPlugins,
 				ssr: {external: true},
 			} as const satisfies UserConfig;

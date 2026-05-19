@@ -1,5 +1,9 @@
 import type {RequestEvent, ResolveOptions} from "@sveltejs/kit";
 /*
+	Ensure Vite keeps this file as a separate chunk by calling `await`.
+*/
+await Promise.resolve();
+/*
 	eslint-disable-next-line @typescript-eslint/no-floating-promises
 	----------------------------------------------------------------
 	This cannot be awaited, because the importing the entrypoint can be a never resolving promise.

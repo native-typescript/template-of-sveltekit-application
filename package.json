@@ -54,6 +54,7 @@
 		"url": "git+https://github.com/native-typescript/template-of-sveltekit-application.git"
 	},
 	"scripts": {
+		"build": "svelte-kit sync && vite build --configLoader=native",
 		"commitlint:check:last": "commitlint --last --strict",
 		"commitlint:check:range": "commitlint --strict",
 		"eslint:check": "svelte-kit sync && eslint --max-warnings=0 .",
@@ -61,6 +62,7 @@
 		"prettier:check": "prettier --check .",
 		"prettier:fix": "prettier --write .",
 		"release-it": "release-it --config='./release-it.config.ts'",
+		"start:build": "node ./build/server/chunks/hooks.server-*.js",
 		"start:development": "vite dev --configLoader=native",
 		"stylelint:check": "stylelint '**/*.{css,scss,svelte}' --max-warnings=0",
 		"stylelint:fix": "stylelint '**/*.{css,scss,svelte}' --fix --max-warnings=0",

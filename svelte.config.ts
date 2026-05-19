@@ -1,9 +1,14 @@
 import type {Config} from "@sveltejs/kit";
 import {vitePreprocess} from "@sveltejs/vite-plugin-svelte";
+const {building_} = await import(`./building/module.ts`);
 const vitePreprocessor = vitePreprocess({});
 export default {
 	compilerOptions: {runes: true},
 	kit: {
+		/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+		...(building_.instances_.environment_.environment.adapter === null ?
+			{}
+		:	{adapter: building_.instances_.environment_.environment.adapter}),
 		csrf: {trustedOrigins: []},
 		env: {dir: `.`},
 		files: {
@@ -19,7 +24,12 @@ export default {
 			serviceWorker: `./source/service-worker.ts`,
 			src: `./source`,
 		},
-		paths: {assets: ``, base: ``, relative: false},
+		paths: {
+			assets: ``,
+			base: building_.instances_.environment_.environment.configurationOfHosting
+				.basePath,
+			relative: false,
+		},
 	},
 	preprocess: [vitePreprocessor],
 	vitePlugin: {prebundleSvelteLibraries: false},

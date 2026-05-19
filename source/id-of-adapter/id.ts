@@ -1,0 +1,4 @@
+import {name_} from "./name/module.ts";
+export const id = ({"": null, "Node": `node`, "static": `static`} as const)[
+	name_.name
+];
