@@ -26,6 +26,7 @@ ARG DOCKER_GID
 RUN groupadd -g ${DOCKER_GID} docker
 RUN usermod -aG docker developer
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates docker-cli docker-compose && rm -rf /var/lib/apt/lists/*
+RUN npx playwright install --with-deps
 USER developer
 WORKDIR /home/developer/template-of-sveltekit-application
 RUN curl -fsSL https://opencode.ai/install | bash
