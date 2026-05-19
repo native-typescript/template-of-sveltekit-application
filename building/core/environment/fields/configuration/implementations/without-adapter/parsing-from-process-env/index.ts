@@ -1,0 +1,1 @@
+export {parseWithoutAdapterConfigurationOfEnvironmentOfBuildingFromProcessEnv} from "./parseWithoutAdapterConfigurationOfEnvironmentOfBuildingFromProcessEnv.ts";

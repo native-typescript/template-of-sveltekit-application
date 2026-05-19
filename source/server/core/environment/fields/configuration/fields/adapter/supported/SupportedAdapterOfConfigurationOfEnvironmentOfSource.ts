@@ -1,1 +1,1 @@
-export type SupportedAdapterOfConfigurationOfEnvironmentOfSource = never;
+export type SupportedAdapterOfConfigurationOfEnvironmentOfSource = null;
