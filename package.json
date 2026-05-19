@@ -8,12 +8,12 @@
 		"url": "https://github.com/native-typescript/template-of-sveltekit-application/issues"
 	},
 	"dependencies": {
+		"@native-typescript/loader-of-typescript-for-node-js": "4.0.0",
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "21.0.1",
 		"@commitlint/types": "21.0.1",
-		"@native-typescript/loader-of-typescript-for-node-js": "4.0.0",
 		"@native-typescript/stringifying-zod-issues": "7.0.0",
 		"@release-it/conventional-changelog": "11.0.0",
 		"@stylistic/eslint-plugin": "5.10.0",
