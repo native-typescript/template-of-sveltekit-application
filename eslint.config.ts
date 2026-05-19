@@ -1388,6 +1388,51 @@ export default [
 		},
 	},
 	{
+		files: [`./**/*.stories.{js,ts}`],
+		rules: {
+			"import-x/no-default-export": [`off`],
+			"no-restricted-imports": [
+				`warn`,
+				{
+					patterns: [
+						{
+							message: `Do not use a shallower index file.`,
+							regex: `^\\.\\.\\/(?:(?:\\.\\.\\/){0,})index\\.ts$`,
+						},
+						{
+							message: `Do not use a shallower module file.`,
+							regex: `^\\.\\.\\/(?:(?:\\.\\.\\/){0,})module\\.ts$`,
+						},
+						{
+							message: `Do not use the local index file.`,
+							regex: `^\\.\\/index\\.ts$`,
+						},
+						{
+							message: `Do not use the local module file.`,
+							regex: `^\\.\\/module\\.ts$`,
+						},
+						{
+							message: `The import is too deep. Use a shallower module file.`,
+							regex: `^\\.\\.\\/(?:(?:\\.\\.\\/){0,})(?:(?:(?!\\.\\.\\/)[^\\/]+\\/){2,})module\\.ts$`,
+						},
+						{
+							message: `The import is too deep. Use a shallower module file.`,
+							regex: `^\\.\\/(?:(?:[^\\/]+\\/){2,})module\\.ts$`,
+						},
+						{
+							message: `Use a module file.`,
+							regex: `^\\.\\.\\/(?:(?:\\.\\.\\/){0,})(?:(?:(?!\\.\\.)(?:[^\\/]+)\\/){1,})(?!module\\.ts$)[^\\/]+$`,
+						},
+						{
+							message: `Use a module file.`,
+							regex: `^\\.\\/(?:(?:[^\\/]+\\/){1,})(?!module\\.ts$)[^\\/]+$`,
+						},
+					],
+				},
+			],
+		},
+	},
+	{
 		files: [`./**/*.test.{js,ts}`],
 		rules: {
 			"import-x/no-default-export": [`off`],
@@ -1604,6 +1649,10 @@ export default [
 	},
 	{
 		files: [`./release-it.config.ts`],
+		rules: {"import-x/no-default-export": [`off`]},
+	},
+	{
+		files: [`./storybook/main.ts`, `./storybook/preview.ts`],
 		rules: {"import-x/no-default-export": [`off`]},
 	},
 	{
