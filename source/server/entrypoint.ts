@@ -16,6 +16,12 @@ if (dev) {
 			*/
 			break;
 		}
+		case `withStaticAdapter`: {
+			/*
+				Development with static adapter should not have an entrypoint.
+			*/
+			break;
+		}
 	}
 } else {
 	if (building) {
@@ -36,6 +42,12 @@ if (dev) {
 			case `withoutAdapter`: {
 				/*
 					Production without adapter should not have an entrypoint.
+				*/
+				break;
+			}
+			case `withStaticAdapter`: {
+				/*
+					Production with static adapter should not have an entrypoint.
 				*/
 				break;
 			}

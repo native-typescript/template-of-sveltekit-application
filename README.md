@@ -18,6 +18,7 @@ The building process can be configured via [environment variables](https://en.wi
 
 - `ADAPTER__NAME`: The name of the adapter to use. The following values are possible:
   - `Node`: Use [the Node.js adapter](https://svelte.dev/docs/kit/adapter-node);
+  - `static`: Use [the static adapter](https://kit.svelte.dev/docs/adapter-static);
 - `HOSTING__BASE_PATH`: Base path under which the application is hosted. Use an empty string for root hosting, or a value that starts with a `/` such as `/app`;
 
 ## Environment variables
@@ -40,6 +41,12 @@ For the Node adapter, you need to provide the environment variables when startin
     - `SERVER__BIND__PORT__TLS__INTERMEDIATE_CA__CERTIFICATE` – The certificate of the intermediate CA;
     - `SERVER__BIND__PORT__TLS__SERVER__CERTIFICATE` – The certificate of the server;
     - `SERVER__BIND__PORT__TLS__SERVER__PRIVATE_KEY` – The private key of the server;
+
+#### Static adapter
+
+For the static adapter, you need to provide the environment variables when building the application.
+
+##### List
 
 ### List
 

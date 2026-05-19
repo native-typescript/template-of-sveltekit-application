@@ -90,6 +90,7 @@ The building process can be configured via [environment variables](https://en.wi
 
 - `ADAPTER__NAME`: The name of the adapter to use. The following values are possible:
   - `Node`: Use [the Node.js adapter](https://svelte.dev/docs/kit/adapter-node);
+  - `static`: Use [the static adapter](https://kit.svelte.dev/docs/adapter-static);
 - `HOSTING__BASE_PATH`: Base path under which the application is hosted. Use an empty string for root hosting, or a value that starts with a `/` such as `/app`;
 
 ### commitlint

@@ -15,5 +15,10 @@ export function create(
 				configuration,
 			);
 		}
+		case `withStaticAdapter`: {
+			return implementations_.withStaticAdapter_.createWithStaticAdapterEnvironment(
+				configuration,
+			);
+		}
 	}
 }

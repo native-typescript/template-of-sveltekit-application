@@ -18,5 +18,13 @@ export function create(
 				{configurationOfAdapter: null, type: `withoutAdapter`};
 			return environment;
 		}
+		case `withStaticAdapter`: {
+			const environment: implementations_.withStaticAdapter_.WithStaticAdapterEnvironment =
+				{
+					configurationOfAdapter: configuration.adapter,
+					type: `withStaticAdapter`,
+				};
+			return environment;
+		}
 	}
 }
