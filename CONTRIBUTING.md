@@ -169,7 +169,7 @@ to perform testing for all tests.
 
 ##### Integration
 
-Integration tests are such that they do setup some external dependencies before running.
+Integration tests are such that they don't build the application and they do setup some external dependencies before running. They run against the source code directly.
 
 Run
 
@@ -193,7 +193,7 @@ to perform testing for system tests.
 
 ##### Unit
 
-Unit tests are such that they don't setup any external dependencies before running.
+Unit tests are such that they don't build the application and they don't setup any external dependencies before running. They run against the source code directly.
 
 Run
 
