@@ -19,5 +19,12 @@ export function create(
 				) satisfies implementations_.withoutAdapter_.WithoutAdapterEnvironment;
 			return environment;
 		}
+		case `static`: {
+			const environment =
+				implementations_.withStaticAdapter_.creatingFromConfiguration_.create(
+					configuration,
+				) satisfies implementations_.withStaticAdapter_.WithStaticAdapterEnvironment;
+			return environment;
+		}
 	}
 }
