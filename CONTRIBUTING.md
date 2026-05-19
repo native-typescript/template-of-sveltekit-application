@@ -50,6 +50,9 @@
     - instances - Instances of the core modules;
     - loading-functions-of-pages - Loading functions of pages;
   - static-assets - Static assets to be served by the application;
+- storybook - [Storybook](https://storybook.js.org) configuration;
+  - [main.ts](https://storybook.js.org/docs/configure) - Main configuration of [Storybook](https://storybook.js.org);
+  - [preview.ts](https://storybook.js.org/docs/configure) - Preview configuration of [Storybook](https://storybook.js.org);
 - [stylelint.config.ts](https://stylelint.io/user-guide/configure) - Configuration of [Stylelint](https://stylelint.io);
 - [svelte.config.ts](https://svelte.dev/docs/kit/configuration) - [Svelte](https://svelte.dev/) configuration;
 - testing - Testing code;
@@ -213,6 +216,20 @@ Running the application can be configured via [environment variables](https://en
     - `SERVER__BIND__PORT__TLS__INTERMEDIATE_CA__CERTIFICATE` - The certificate of the intermediate CA;
     - `SERVER__BIND__PORT__TLS__SERVER__CERTIFICATE` - The certificate of the server;
     - `SERVER__BIND__PORT__TLS__SERVER__PRIVATE_KEY` - The private key of the server;
+
+### Storybook
+
+[Storybook](https://storybook.js.org) is used for isolated UI component development and previewing stories.
+
+#### Running
+
+Run
+
+```
+npm run storybook
+```
+
+to start [Storybook](https://storybook.js.org) on port `6006`.
 
 ### Stylelint
 
