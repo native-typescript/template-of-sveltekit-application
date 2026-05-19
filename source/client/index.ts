@@ -1,1 +1,1 @@
-export type * from "./core/module.ts";
+export * from "./core/module.ts";
