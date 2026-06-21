@@ -82,5 +82,5 @@
 		"test:check:unit": "node --env-file-if-exists='./.env' --test --test-global-setup='./testing/entrypoint-of-testing.ts' '**/*.unit.test.ts'"
 	},
 	"type": "module",
-	"version": "4.0.0"
+	"version": "5.0.0"
 }
