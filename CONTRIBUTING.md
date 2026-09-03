@@ -44,6 +44,9 @@
     - index.ts – Index;
     - instances – Instances of the core modules;
     - module.ts – Module;
+  - service-worker – Service worker code;
+    - core – Core modules;
+    - entrypoint.ts – Entrypoint;
   - static-assets – Static assets to be served by the application;
 - [stylelint.config.ts](https://stylelint.io/user-guide/configure) – Configuration of [Stylelint](https://stylelint.io);
 - [svelte.config.ts](https://svelte.dev/docs/kit/configuration) – [Svelte](https://svelte.dev/) configuration;
