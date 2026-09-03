@@ -563,15 +563,39 @@ export default [
 						},
 						{
 							except: [],
+							from: `./source/client/**/*`,
+							message: `The service worker module should not import client module.`,
+							target: `./source/service-worker/**/*`,
+						},
+						{
+							except: [],
 							from: `./source/server/**/*`,
 							message: `The client module should not import the server module.`,
 							target: `./source/client/**/*`,
 						},
 						{
 							except: [],
+							from: `./source/server/**/*`,
+							message: `The service worker module should not import server module.`,
+							target: `./source/service-worker/**/*`,
+						},
+						{
+							except: [],
 							from: `./source/server/instances/**/*`,
 							message: `The core module should not import the instances module.`,
 							target: `./source/server/core/**/*`,
+						},
+						{
+							except: [],
+							from: `./source/service-worker/**/*`,
+							message: `The client module should not import the service worker module.`,
+							target: `./source/client/**/*`,
+						},
+						{
+							except: [],
+							from: `./source/service-worker/**/*`,
+							message: `The server module should not import the service worker module.`,
+							target: `./source/server/**/*`,
 						},
 						{
 							except: [],
@@ -1294,14 +1318,14 @@ export default [
 		files: [
 			`./!(source)/**/*.{js,svelte,ts}`,
 			`./*.{js,svelte,ts}`,
-			`./source/!(client)/**/*.{js,svelte,ts}`,
+			`./source/!(client|service-worker)/**/*.{js,svelte,ts}`,
 			`./source/*.{js,svelte,ts}`,
 		],
 		rules: {
 			"@typescript-eslint/no-shadow": [
 				`warn`,
 				{
-					allow: [`Console`, `Element`, `Plugin`, `Report`],
+					allow: [`Client`, `Console`, `Element`, `Plugin`, `Report`],
 					builtinGlobals: true,
 					hoist: `all`,
 					ignoreFunctionTypeParameterNameValueShadow: false,
@@ -1454,7 +1478,7 @@ export default [
 			"@typescript-eslint/no-shadow": [
 				`warn`,
 				{
-					allow: [],
+					allow: [`Client`],
 					builtinGlobals: true,
 					hoist: `all`,
 					ignoreFunctionTypeParameterNameValueShadow: false,
@@ -1558,6 +1582,22 @@ export default [
 					suffix: [],
 					trailingUnderscore: `allow`,
 					types: [],
+				},
+			],
+		},
+	},
+	{
+		files: [`./source/service-worker/**/*.{js,ts}`],
+		rules: {
+			"@typescript-eslint/no-shadow": [
+				`warn`,
+				{
+					allow: [],
+					builtinGlobals: true,
+					hoist: `all`,
+					ignoreFunctionTypeParameterNameValueShadow: false,
+					ignoreOnInitialization: true,
+					ignoreTypeValueShadow: false,
 				},
 			],
 		},

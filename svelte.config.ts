@@ -25,6 +25,8 @@ export default {
 			// eslint-disable-next-line @typescript-eslint/no-deprecated
 			routes: `./source/routes`,
 			// eslint-disable-next-line @typescript-eslint/no-deprecated
+			serviceWorker: `./source/service-worker/entrypoint.ts`,
+			// eslint-disable-next-line @typescript-eslint/no-deprecated
 			src: `./source`,
 		},
 		paths: {assets: ``, base: ``, relative: false},
