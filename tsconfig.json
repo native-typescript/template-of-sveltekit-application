@@ -17,7 +17,7 @@
 		"forceConsistentCasingInFileNames": false,
 		"isolatedDeclarations": false,
 		"isolatedModules": true,
-		"lib": ["DOM", "ES2025", "ESNext.Array", "ESNext.TypedArrays"],
+		"lib": ["DOM", "ES2025", "ESNext.Array", "ESNext.TypedArrays", "WebWorker"],
 		"libReplacement": false,
 		"maxNodeModuleJsDepth": 0,
 		"module": "node18",
