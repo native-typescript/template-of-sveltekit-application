@@ -28,5 +28,6 @@ RUN usermod -aG docker developer
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates docker-cli docker-compose && rm -rf /var/lib/apt/lists/*
 USER developer
 WORKDIR /home/developer/template-of-sveltekit-application
+RUN curl -fsSL https://opencode.ai/install | bash
 ENV ADAPTER__SHOULD_BE_USED=no
 ENV HOSTING__BASE_PATH=
