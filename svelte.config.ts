@@ -16,6 +16,7 @@ export default {
 			},
 			lib: `./source`,
 			routes: `./source/routes`,
+			serviceWorker: `./source/service-worker/entrypoint.ts`,
 			src: `./source`,
 		},
 		paths: {assets: ``, base: ``, relative: false},
