@@ -1,0 +1,10 @@
+/**/*
+!/building
+!/development
+!/package-lock.json
+!/package.json
+!/source
+!/stringifying-ArkType-errors
+!/svelte.config.ts
+!/vite.config.ts
+/source/**/*.test.ts
