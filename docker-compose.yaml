@@ -1,0 +1,21 @@
+services:
+  template_of_sveltekit_application:
+    build:
+      args:
+        DEBIAN__DOCKER_IMAGE__TAG__DATE: "${DEBIAN__DOCKER_IMAGE__TAG__DATE}"
+        HOSTING__BASE_PATH: "${HOSTING__BASE_PATH}"
+        NODE_JS__VERSION: "${NODE_JS__VERSION}"
+      context: "."
+      dockerfile: "Dockerfile"
+    depends_on: {}
+    env_file:
+      - path: ".env"
+        required: false
+    environment:
+      ADAPTER__NAME: "Node"
+      MODE_OF_OPERATION__NAME: "dynamic"
+      SERVER__IS_ENABLED: "yes"
+    ports:
+      - "5173:5173"
+    working_dir: "/home/runner/template-of-sveltekit-application"
+volumes: {}
