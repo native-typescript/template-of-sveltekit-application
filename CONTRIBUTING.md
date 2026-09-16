@@ -24,6 +24,7 @@
   - index.ts – Index;
   - instances – Instances of the core modules;
   - module.ts – Module;
+- [docker-compose.yaml](https://docs.docker.com/compose/compose-file/) – Configuration of [Docker Compose](https://docs.docker.com/compose/);
 - [Dockerfile](https://docs.docker.com/build/concepts/dockerfile/);
 - Dockerfile.system.test.ts;
 - [eslint.config.ts](https://eslint.org/docs/latest/use/configure/configuration-files) – Configuration of [ESLint](https://eslint.org);
