@@ -1,3 +1,6 @@
 import {core_} from "./core/module.ts";
-import {instances_} from "./instances/module.ts";
-await core_.runningEntrypoint_.run(instances_.environment_.environment);
+import {importingInstances_} from "./importing-instances/module.ts";
+const {instances_} = await importingInstances_.import_();
+const environment = instances_.environment_
+	.environment satisfies core_.environment_.Environment;
+await core_.runningEntrypoint_.run(environment);
