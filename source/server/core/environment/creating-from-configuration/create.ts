@@ -2,7 +2,7 @@ import type {configuration_} from "../configuration/module.ts";
 import type {Environment} from "../Environment.ts";
 import {fields_} from "../fields/module.ts";
 export function create(
-	configuration: configuration_.Configuration,
+	configuration: configuration_.supported_.SupportedConfiguration,
 ): Environment {
 	const featuresOfEnvironment =
 		fields_.features_.creatingFromConfiguration_.create(
