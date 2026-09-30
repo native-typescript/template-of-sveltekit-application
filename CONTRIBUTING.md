@@ -33,6 +33,7 @@
   - server – Server-only code;
     - core – Core modules;
     - entrypoint.ts – Entrypoint;
+    - importing-instances – Allows importing the instances with a function call;
     - index.ts – Index;
     - instances – Instances of the core modules;
     - module.ts – Module;
