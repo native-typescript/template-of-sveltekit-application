@@ -3,7 +3,7 @@ import {creatingFromConfiguration_} from "../../creating-from-configuration/modu
 import type {Environment} from "../../Environment.ts";
 import type {SupportedEnvironment} from "../SupportedEnvironment.ts";
 export function create(
-	configuration: configuration_.Configuration,
+	configuration: configuration_.supported_.SupportedConfiguration,
 ): SupportedEnvironment {
 	const environment = creatingFromConfiguration_.create(
 		configuration,
