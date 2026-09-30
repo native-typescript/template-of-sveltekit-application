@@ -7,7 +7,7 @@ const resultOfParsing =
 	) satisfies z.ZodSafeParseResult<core_.environment_.configuration_.Configuration>;
 if (!resultOfParsing.success) {
 	console.error(
-		`An error occurred while parsing the environment variables for the configuration of source:
+		`An error occurred while parsing the environment variables for the configuration of server of source:
 ${stringifyingZodIssues.stringifyZodIssues(resultOfParsing.error.issues)}`,
 	);
 	process.exit(1);
