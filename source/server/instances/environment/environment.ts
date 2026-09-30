@@ -1,4 +1,4 @@
-import {stringifyingArktypeErrors_} from "../../../stringifying-ArkType-errors/module.ts";
+import {stringifyingArktypeErrors_} from "../../../../stringifying-ArkType-errors/module.ts";
 import {core_} from "../../core/module.ts";
 import {ArkErrors} from "arktype";
 const resultOfParsing =

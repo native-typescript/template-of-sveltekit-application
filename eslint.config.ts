@@ -581,9 +581,15 @@ export default [
 						},
 						{
 							except: [],
-							from: `./source/instances/**/*`,
+							from: `./source/server/**/*`,
+							message: `The client module should not import the server module.`,
+							target: `./source/client/**/*`,
+						},
+						{
+							except: [],
+							from: `./source/server/instances/**/*`,
 							message: `The core module should not import the instances module.`,
-							target: `./source/core/**/*`,
+							target: `./source/server/core/**/*`,
 						},
 						{
 							except: [],
