@@ -57,6 +57,7 @@
 		"url": "git+https://github.com/native-typescript/template-of-sveltekit-application.git"
 	},
 	"scripts": {
+		"build": "svelte-kit sync && vite build --configLoader=native",
 		"commitlint:check:last": "commitlint --last --strict",
 		"commitlint:check:range": "commitlint --strict",
 		"eslint:check": "svelte-kit sync && eslint --max-warnings=0 .",

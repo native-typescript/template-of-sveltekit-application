@@ -1,1 +1,1 @@
-export * as withDynamicModeOfOperation_ from "./index.ts";
+export type * as withDynamicModeOfOperation_ from "./index.ts";
