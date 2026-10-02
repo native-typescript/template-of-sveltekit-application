@@ -22,7 +22,7 @@
 	"otherPortsAttributes": {},
 	"overrideCommand": true,
 	"portsAttributes": {},
-	"postCreateCommand": "npm clean-install && . ~/.bashrc && npm run sveltekit:synchronize",
+	"postCreateCommand": "npm clean-install && . ~/.bashrc && ADAPTER__SHOULD_BE_USED=no npm run sveltekit:synchronize",
 	"privileged": false,
 	"remoteEnv": {},
 	"remoteUser": "developer",

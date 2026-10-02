@@ -1,1 +1,1 @@
-export * as withStaticModeOfOperation_ from "./index.ts";
+export type * as withStaticModeOfOperation_ from "./index.ts";
