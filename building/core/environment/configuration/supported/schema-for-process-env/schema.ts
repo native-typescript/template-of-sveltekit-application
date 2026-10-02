@@ -1,2 +1,3 @@
-import {schemaForProcessEnv_} from "../../schema-for-process-env/module.ts";
-export const schema = schemaForProcessEnv_.schema;
+import {implementations_} from "../../implementations/module.ts";
+export const schema =
+	implementations_.withoutAdapter_.schemaForProcessEnv_.schema;
