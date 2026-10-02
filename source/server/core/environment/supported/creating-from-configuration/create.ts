@@ -6,18 +6,28 @@ export function create(
 ): SupportedEnvironment {
 	switch (configuration.modeOfOperation) {
 		case `dynamic`: {
-			const environment =
-				implementations_.withDynamicModeOfOperation_.creatingFromConfiguration_.create(
-					configuration,
-				) satisfies implementations_.withDynamicModeOfOperation_.WithDynamicModeOfOperationEnvironment;
-			return environment;
+			switch (configuration.typeOfAdapter) {
+				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+				case `none`: {
+					const environment =
+						implementations_.withDynamicModeOfOperationWithoutAdapter_.creatingFromConfiguration_.create(
+							configuration,
+						) satisfies implementations_.withDynamicModeOfOperationWithoutAdapter_.WithDynamicModeOfOperationWithoutAdapterEnvironment;
+					return environment;
+				}
+			}
 		}
 		case `static`: {
-			const environment =
-				implementations_.withStaticModeOfOperation_.creatingFromConfiguration_.create(
-					configuration,
-				) satisfies implementations_.withStaticModeOfOperation_.WithStaticModeOfOperationEnvironment;
-			return environment;
+			switch (configuration.typeOfAdapter) {
+				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+				case `none`: {
+					const environment =
+						implementations_.withStaticModeOfOperationWithoutAdapter_.creatingFromConfiguration_.create(
+							configuration,
+						) satisfies implementations_.withStaticModeOfOperationWithoutAdapter_.WithStaticModeOfOperationWithoutAdapterEnvironment;
+					return environment;
+				}
+			}
 		}
 	}
 }

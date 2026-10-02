@@ -1,4 +1,8 @@
 import type {RequestEvent, ResolveOptions} from "@sveltejs/kit";
+/**
+ *	Ensure Vite keeps this file as a separate chunk by calling `await`.
+ */
+await Promise.resolve();
 import(`./entrypoint.ts`);
 declare global {
 	// eslint-disable-next-line @typescript-eslint/no-namespace
