@@ -1,4 +1,5 @@
 env:
+  ADAPTER__SHOULD_BE_USED: "no"
   MODE_OF_OPERATION: "static"
   NODE_JS__VERSION: "26.9.0"
   SERVER__BIND__ADDRESS: "::1"

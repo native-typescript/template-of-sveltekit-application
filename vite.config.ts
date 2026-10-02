@@ -43,6 +43,7 @@ export default defineConfig(async function determineConfig(
 			} as const satisfies UserConfig;
 		}
 		case `production`: {
+			const {building_} = await import(`./building/module.ts`);
 			return {
 				build: {
 					minify: false,
@@ -52,7 +53,11 @@ export default defineConfig(async function determineConfig(
 						treeshake: true,
 					},
 				},
-				define: {__SHOULD_PRERENDER__: `auto`},
+				define: {
+					__SHOULD_PRERENDER__: ({none: `auto`} as const)[
+						building_.instances_.environment_.environment.typeOfAdapter
+					],
+				},
 				experimental: {},
 				plugins: plugins,
 				ssr: {external: true},
