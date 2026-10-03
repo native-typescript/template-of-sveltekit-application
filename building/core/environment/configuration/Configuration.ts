@@ -4,5 +4,6 @@ export interface Configuration<
 	TypeToUse extends string,
 > {
 	readonly adapter: AdapterToUse;
+	readonly hosting: fields_.hosting_.Hosting;
 	readonly type: TypeToUse;
 }
