@@ -5,5 +5,6 @@ export interface Environment<
 	TypeOfAdapterToUse extends configuration_.fields_.typeOfAdapter_.Type,
 > {
 	readonly adapter: AdapterToUse;
+	readonly configurationOfHosting: configuration_.fields_.hosting_.Hosting;
 	readonly typeOfAdapter: TypeOfAdapterToUse;
 }

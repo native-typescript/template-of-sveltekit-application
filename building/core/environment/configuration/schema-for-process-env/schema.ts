@@ -1,2 +1,2 @@
-import {z} from "zod";
-export const schema = z.looseObject({});
+import {fields_} from "../fields/module.ts";
+export const schema = fields_.hosting_.schemaForProcessEnv_.schema;
