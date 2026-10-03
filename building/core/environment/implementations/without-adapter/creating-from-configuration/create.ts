@@ -5,6 +5,7 @@ export function create(
 ): WithoutAdapterEnvironment {
 	const environment = {
 		adapter: configuration.adapter,
+		configurationOfHosting: configuration.hosting,
 		typeOfAdapter: `none`,
 	} as const satisfies WithoutAdapterEnvironment;
 	return environment;
