@@ -12,6 +12,7 @@ ${stringifyingZodIssues.stringifyZodIssues(resultOfParsing.error.issues)}`,
 	);
 	process.exit(1);
 }
-export const environment = core_.environment_.creatingFromConfiguration_.create(
-	resultOfParsing.data,
-) satisfies core_.environment_.Environment;
+export const environment =
+	core_.environment_.supported_.creatingFromConfiguration_.create(
+		resultOfParsing.data,
+	) satisfies core_.environment_.supported_.SupportedEnvironment;
