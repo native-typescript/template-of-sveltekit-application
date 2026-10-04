@@ -1,1 +1,1 @@
-export type * as building_ from "./index.ts";
+export * as building_ from "./index.ts";
