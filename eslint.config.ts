@@ -557,6 +557,12 @@ export default [
 						},
 						{
 							except: [],
+							from: `./!(development|node_modules)/**/*`,
+							message: `The development module should not import non-development code.`,
+							target: `./development/**/*`,
+						},
+						{
+							except: [],
 							from: `./!(node_modules|source|testing)/**/*`,
 							message: `The testing module should not import non-source code or non-testing code.`,
 							target: `./testing/**/*`,
@@ -566,6 +572,12 @@ export default [
 							from: `./**/*.test.ts`,
 							message: `Test suites should not be imported.`,
 							target: `./**/*`,
+						},
+						{
+							except: [],
+							from: `./development/instances/**/*`,
+							message: `The core module should not import the instances module.`,
+							target: `./development/core/**/*`,
 						},
 						{
 							except: [],
