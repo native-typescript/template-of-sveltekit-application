@@ -11,6 +11,11 @@
 - [.vscode](https://code.visualstudio.com/docs/configure/settings#_workspace-settings) – Configuration of [Visual Studio Code](https://code.visualstudio.com);
 - [commitlint.config.ts](https://commitlint.js.org/reference/configuration.html#config-via-file) – Configuration of [commitlint](https://commitlint.js.org);
 - [CONTRIBUTING.md](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors);
+- development – Development code;
+  - core – Core modules;
+  - index.ts – Index;
+  - instances – Instances of the core modules;
+  - module.ts – Module;
 - [eslint.config.ts](https://eslint.org/docs/latest/use/configure/configuration-files) – Configuration of [ESLint](https://eslint.org);
 - node_modules – [Node.js](https://nodejs.org) dependencies;
 - [package-lock.json](https://docs.npmjs.com/cli/v7/configuring-npm/package-lock-json) – [npm](https://www.npmjs.com) lock;
