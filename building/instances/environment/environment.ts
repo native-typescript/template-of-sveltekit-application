@@ -10,6 +10,7 @@ ${stringifyingArktypeErrors_.many_.stringify(resultOfParsing)}`,
 	);
 	process.exit(1);
 }
-export const environment = core_.environment_.creatingFromConfiguration_.create(
-	resultOfParsing,
-) satisfies core_.environment_.Environment;
+export const environment =
+	core_.environment_.supported_.creatingFromConfiguration_.create(
+		resultOfParsing,
+	) satisfies core_.environment_.supported_.SupportedEnvironment;
