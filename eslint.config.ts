@@ -533,6 +533,12 @@ export default [
 					zones: [
 						{
 							except: [],
+							from: `./!(building|node_modules)/**/*`,
+							message: `The building module should not import non-building code.`,
+							target: `./building/**/*`,
+						},
+						{
+							except: [],
 							from: `./!(node_modules|source)/**/*`,
 							message: `The source module should not import non-source code.`,
 							target: `./source/**/!(*.test.ts)`,
@@ -554,6 +560,12 @@ export default [
 							from: `./**/*.test.ts`,
 							message: `Test suites should not be imported.`,
 							target: `./**/*`,
+						},
+						{
+							except: [],
+							from: `./building/instances/**/*`,
+							message: `The core module should not import the instances module.`,
+							target: `./building/core/**/*`,
 						},
 						{
 							except: [],
@@ -1633,5 +1645,5 @@ export default [
 			"import-x/no-default-export": [`off`],
 		},
 	},
-	{ignores: [`./.git`, `./.svelte-kit`, `./node_modules`]},
+	{ignores: [`./.git`, `./.svelte-kit`, `./build`, `./node_modules`]},
 ] as const satisfies readonly Linter.Config[];
