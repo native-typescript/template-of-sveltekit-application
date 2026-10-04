@@ -10,6 +10,11 @@
 - [.stylelintignore](https://stylelint.io/user-guide/ignore-code/#files-entirely);
 - [.svelte-kit](https://svelte.dev/docs/kit/project-structure#Other-files-.svelte-kit);
 - [.vscode](https://code.visualstudio.com/docs/configure/settings#_workspace-settings) – Configuration of [Visual Studio Code](https://code.visualstudio.com);
+- building – Building code;
+  - core – Core modules;
+  - index.ts – Index;
+  - instances – Instances of the core modules;
+  - module.ts – Module;
 - [commitlint.config.ts](https://commitlint.js.org/reference/configuration.html#config-via-file) – Configuration of [commitlint](https://commitlint.js.org);
 - [CONTRIBUTING.md](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors);
 - development – Development code;
