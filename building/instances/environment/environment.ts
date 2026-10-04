@@ -2,7 +2,9 @@ import {stringifyingArktypeErrors_} from "../../../stringifying-ArkType-errors/m
 import {core_} from "../../core/module.ts";
 import {ArkErrors} from "arktype";
 const resultOfParsing =
-	core_.environment_.configuration_.schemaForProcessEnv_.schema(process.env);
+	core_.environment_.configuration_.supported_.schemaForProcessEnv_.schema(
+		process.env,
+	);
 if (resultOfParsing instanceof ArkErrors) {
 	console.error(
 		`An error occurred while parsing the environment variables for the configuration of building:
