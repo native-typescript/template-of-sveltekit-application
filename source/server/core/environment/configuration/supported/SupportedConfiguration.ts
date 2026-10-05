@@ -1,2 +1,3 @@
-import type {Configuration} from "../Configuration.ts";
-export type SupportedConfiguration = Configuration;
+import type {implementations_} from "../implementations/module.ts";
+export type SupportedConfiguration =
+	implementations_.withoutModeOfOperation_.WithoutModeOfOperationConfiguration;
