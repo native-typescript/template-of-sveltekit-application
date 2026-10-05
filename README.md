@@ -7,6 +7,5 @@ The application can be configured via [environment variables](https://en.wikiped
 ### List
 
 - `MODE_OF_OPERATION`: The mode of operation of the application. The following values are possible:
-  - (empty): The application is operating without a mode of operation;
   - `dynamic`: The application is operating dynamically;
   - `static`: The application is operating statically;
