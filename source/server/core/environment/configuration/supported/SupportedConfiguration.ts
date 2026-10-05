@@ -1,3 +1,4 @@
 import type {implementations_} from "../implementations/module.ts";
 export type SupportedConfiguration =
-	implementations_.withoutModeOfOperation_.WithoutModeOfOperationConfiguration;
+	| implementations_.withDynamicModeOfOperation_.WithDynamicModeOfOperationConfiguration
+	| implementations_.withoutModeOfOperation_.WithoutModeOfOperationConfiguration;
