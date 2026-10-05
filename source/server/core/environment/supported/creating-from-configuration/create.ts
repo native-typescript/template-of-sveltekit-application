@@ -19,5 +19,12 @@ export function create(
 				) satisfies implementations_.withDynamicModeOfOperation_.WithDynamicModeOfOperationEnvironment;
 			return environment;
 		}
+		case `static`: {
+			const environment =
+				implementations_.withStaticModeOfOperation_.creatingFromConfiguration_.create(
+					configuration,
+				) satisfies implementations_.withStaticModeOfOperation_.WithStaticModeOfOperationEnvironment;
+			return environment;
+		}
 	}
 }
