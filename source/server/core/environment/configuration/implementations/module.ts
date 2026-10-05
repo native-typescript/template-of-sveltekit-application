@@ -1,1 +1,1 @@
-export type * as implementations_ from "./index.ts";
+export * as implementations_ from "./index.ts";
