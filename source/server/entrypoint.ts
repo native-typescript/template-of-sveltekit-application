@@ -11,4 +11,7 @@ switch (environment.modeOfOperation) {
 		await core_.runningEntrypoint_.run(environment);
 		break;
 	}
+	case `static`: {
+		break;
+	}
 }
