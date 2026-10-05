@@ -5,12 +5,18 @@ export function create(
 	configuration: configuration_.supported_.SupportedConfiguration,
 ): SupportedEnvironment {
 	switch (configuration.modeOfOperation) {
-		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 		case ``: {
 			const environment =
 				implementations_.withoutModeOfOperation_.creatingFromConfiguration_.create(
 					configuration,
 				) satisfies implementations_.withoutModeOfOperation_.WithoutModeOfOperationEnvironment;
+			return environment;
+		}
+		case `dynamic`: {
+			const environment =
+				implementations_.withDynamicModeOfOperation_.creatingFromConfiguration_.create(
+					configuration,
+				) satisfies implementations_.withDynamicModeOfOperation_.WithDynamicModeOfOperationEnvironment;
 			return environment;
 		}
 	}
