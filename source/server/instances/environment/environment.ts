@@ -7,7 +7,7 @@ const resultOfParsing =
 	);
 if (resultOfParsing instanceof ArkErrors) {
 	console.error(
-		`An error occurred while parsing the environment variables for the configuration of source:
+		`An error occurred while parsing the environment variables for the configuration of server of source:
 ${stringifyingArktypeErrors_.many_.stringify(resultOfParsing)}`,
 	);
 	process.exit(1);
