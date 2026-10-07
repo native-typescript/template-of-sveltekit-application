@@ -7,6 +7,7 @@
 - .github – Configuration of [GitHub](https://github.com);
 - [.gitignore](https://git-scm.com/docs/gitignore);
 - [.prettierignore](https://prettier.io/docs/ignore.html);
+- [.stylelintignore](https://stylelint.io/user-guide/ignore-code/#files-entirely);
 - [.vscode](https://code.visualstudio.com/docs/configure/settings#_workspace-settings) – Configuration of [Visual Studio Code](https://code.visualstudio.com);
 - [commitlint.config.ts](https://commitlint.js.org/reference/configuration.html#config-via-file) – Configuration of [commitlint](https://commitlint.js.org);
 - [CONTRIBUTING.md](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors);
@@ -23,6 +24,7 @@
   - index.ts – Index;
   - instances – Instances of the core modules;
   - module.ts – Module;
+- [stylelint.config.ts](https://stylelint.io/user-guide/configure) – Configuration of [Stylelint](https://stylelint.io);
 - testing – Testing code;
   - core – Core modules;
   - entrypoint.ts – Global setup and teardown for tests;
@@ -136,6 +138,31 @@ npm run start
 ```
 
 to start the application.
+
+### Stylelint
+
+[Stylelint](https://stylelint.io) is used for style linting.
+
+#### Checking
+
+Run
+
+```
+npm run stylelint:check
+
+```
+
+to perform style linting.
+
+#### Fixing
+
+Run
+
+```
+npm run stylelint:fix
+```
+
+to automatically fix style linting issues in the codebase where possible.
 
 ### Testing
 
