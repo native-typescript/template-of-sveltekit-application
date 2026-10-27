@@ -85,5 +85,5 @@
 		"test:check:unit": "node --env-file-if-exists='./.env' --test --test-global-setup='./testing/entrypoint.ts' '**/*.unit.test.ts'"
 	},
 	"type": "module",
-	"version": "7.0.0"
+	"version": "8.0.0"
 }
